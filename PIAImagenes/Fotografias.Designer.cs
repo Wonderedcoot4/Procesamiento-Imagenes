@@ -30,11 +30,11 @@ namespace WindowsFormsApp1
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Fotografias));
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.button1 = new System.Windows.Forms.Button();
+            this.FotoOriginalPictureBox = new System.Windows.Forms.PictureBox();
+            this.SubirFotoBtn = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
             this.StartScreenBttn = new System.Windows.Forms.Button();
-            this.button5 = new System.Windows.Forms.Button();
+            this.FiltroPixeladoBtn = new System.Windows.Forms.Button();
             this.button6 = new System.Windows.Forms.Button();
             this.button7 = new System.Windows.Forms.Button();
             this.button8 = new System.Windows.Forms.Button();
@@ -46,38 +46,38 @@ namespace WindowsFormsApp1
             this.button15 = new System.Windows.Forms.Button();
             this.button16 = new System.Windows.Forms.Button();
             this.button17 = new System.Windows.Forms.Button();
-            this.pictureBox3 = new System.Windows.Forms.PictureBox();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            this.FotoFiltroPicBox = new System.Windows.Forms.PictureBox();
+            ((System.ComponentModel.ISupportInitialize)(this.FotoOriginalPictureBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.FotoFiltroPicBox)).BeginInit();
             this.SuspendLayout();
             // 
-            // pictureBox1
+            // FotoOriginalPictureBox
             // 
-            this.pictureBox1.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(0, 0);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(601, 366);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox1.TabIndex = 0;
-            this.pictureBox1.TabStop = false;
+            this.FotoOriginalPictureBox.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.FotoOriginalPictureBox.Image = ((System.Drawing.Image)(resources.GetObject("FotoOriginalPictureBox.Image")));
+            this.FotoOriginalPictureBox.Location = new System.Drawing.Point(0, 0);
+            this.FotoOriginalPictureBox.Name = "FotoOriginalPictureBox";
+            this.FotoOriginalPictureBox.Size = new System.Drawing.Size(601, 366);
+            this.FotoOriginalPictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.FotoOriginalPictureBox.TabIndex = 0;
+            this.FotoOriginalPictureBox.TabStop = false;
             // 
-            // button1
+            // SubirFotoBtn
             // 
-            this.button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.button1.FlatAppearance.BorderColor = System.Drawing.Color.Yellow;
-            this.button1.FlatAppearance.BorderSize = 10;
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.Location = new System.Drawing.Point(32, 389);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(187, 92);
-            this.button1.TabIndex = 4;
-            this.button1.Text = "Subir Foto";
-            this.button1.UseVisualStyleBackColor = false;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.SubirFotoBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.SubirFotoBtn.FlatAppearance.BorderColor = System.Drawing.Color.Yellow;
+            this.SubirFotoBtn.FlatAppearance.BorderSize = 10;
+            this.SubirFotoBtn.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.SubirFotoBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.SubirFotoBtn.Location = new System.Drawing.Point(32, 389);
+            this.SubirFotoBtn.Name = "SubirFotoBtn";
+            this.SubirFotoBtn.Size = new System.Drawing.Size(187, 92);
+            this.SubirFotoBtn.TabIndex = 4;
+            this.SubirFotoBtn.Text = "Subir Foto";
+            this.SubirFotoBtn.UseVisualStyleBackColor = false;
+            this.SubirFotoBtn.Click += new System.EventHandler(this.SubirFotoBtn_Click);
             // 
             // button3
             // 
@@ -104,17 +104,18 @@ namespace WindowsFormsApp1
             this.StartScreenBttn.UseVisualStyleBackColor = false;
             this.StartScreenBttn.Click += new System.EventHandler(this.StartScreenBttn_Click);
             // 
-            // button5
+            // FiltroPixeladoBtn
             // 
-            this.button5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.button5.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.button5.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button5.Location = new System.Drawing.Point(1415, 12);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(187, 92);
-            this.button5.TabIndex = 8;
-            this.button5.Text = "Pixelado";
-            this.button5.UseVisualStyleBackColor = false;
+            this.FiltroPixeladoBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.FiltroPixeladoBtn.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.FiltroPixeladoBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.FiltroPixeladoBtn.Location = new System.Drawing.Point(1415, 12);
+            this.FiltroPixeladoBtn.Name = "FiltroPixeladoBtn";
+            this.FiltroPixeladoBtn.Size = new System.Drawing.Size(187, 92);
+            this.FiltroPixeladoBtn.TabIndex = 8;
+            this.FiltroPixeladoBtn.Text = "Pixelado";
+            this.FiltroPixeladoBtn.UseVisualStyleBackColor = false;
+            this.FiltroPixeladoBtn.Click += new System.EventHandler(this.FiltroPixeladoBtn_Click);
             // 
             // button6
             // 
@@ -243,16 +244,16 @@ namespace WindowsFormsApp1
             this.button17.Text = "Constraste";
             this.button17.UseVisualStyleBackColor = false;
             // 
-            // pictureBox3
+            // FotoFiltroPicBox
             // 
-            this.pictureBox3.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.pictureBox3.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox3.Image")));
-            this.pictureBox3.Location = new System.Drawing.Point(878, 0);
-            this.pictureBox3.Name = "pictureBox3";
-            this.pictureBox3.Size = new System.Drawing.Size(513, 366);
-            this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox3.TabIndex = 35;
-            this.pictureBox3.TabStop = false;
+            this.FotoFiltroPicBox.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.FotoFiltroPicBox.Image = ((System.Drawing.Image)(resources.GetObject("FotoFiltroPicBox.Image")));
+            this.FotoFiltroPicBox.Location = new System.Drawing.Point(878, 0);
+            this.FotoFiltroPicBox.Name = "FotoFiltroPicBox";
+            this.FotoFiltroPicBox.Size = new System.Drawing.Size(513, 366);
+            this.FotoFiltroPicBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.FotoFiltroPicBox.TabIndex = 35;
+            this.FotoFiltroPicBox.TabStop = false;
             // 
             // Fotografias
             // 
@@ -261,7 +262,7 @@ namespace WindowsFormsApp1
             this.AutoSize = true;
             this.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.ClientSize = new System.Drawing.Size(1866, 664);
-            this.Controls.Add(this.pictureBox3);
+            this.Controls.Add(this.FotoFiltroPicBox);
             this.Controls.Add(this.trackBar1);
             this.Controls.Add(this.pictureBox2);
             this.Controls.Add(this.button17);
@@ -273,19 +274,19 @@ namespace WindowsFormsApp1
             this.Controls.Add(this.button7);
             this.Controls.Add(this.button8);
             this.Controls.Add(this.button6);
-            this.Controls.Add(this.button5);
+            this.Controls.Add(this.FiltroPixeladoBtn);
             this.Controls.Add(this.StartScreenBttn);
             this.Controls.Add(this.button3);
-            this.Controls.Add(this.button1);
-            this.Controls.Add(this.pictureBox1);
+            this.Controls.Add(this.SubirFotoBtn);
+            this.Controls.Add(this.FotoOriginalPictureBox);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "Fotografias";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Fotografias";
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.FotoOriginalPictureBox)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.FotoFiltroPicBox)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -293,11 +294,11 @@ namespace WindowsFormsApp1
 
         #endregion
 
-        private System.Windows.Forms.PictureBox pictureBox1;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.PictureBox FotoOriginalPictureBox;
+        private System.Windows.Forms.Button SubirFotoBtn;
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Button StartScreenBttn;
-        private System.Windows.Forms.Button button5;
+        private System.Windows.Forms.Button FiltroPixeladoBtn;
         private System.Windows.Forms.Button button6;
         private System.Windows.Forms.Button button7;
         private System.Windows.Forms.Button button8;
@@ -309,6 +310,6 @@ namespace WindowsFormsApp1
         private System.Windows.Forms.Button button15;
         private System.Windows.Forms.Button button16;
         private System.Windows.Forms.Button button17;
-        private System.Windows.Forms.PictureBox pictureBox3;
+        private System.Windows.Forms.PictureBox FotoFiltroPicBox;
     }
 }

@@ -26,5 +26,56 @@ namespace WindowsFormsApp1
         {
             this.Close();
         }
+
+        private void SubirFotoBtn_Click(object sender, EventArgs e)
+        {
+            // OBJ para abrir el explorador
+            OpenFileDialog openFileDialog1 = new OpenFileDialog();
+
+            openFileDialog1.Filter = "Archivos de imagen|*.jpg;*.jpeg;*.png;*.gif|Todos los archivos|*.*";
+
+
+            if (openFileDialog1.ShowDialog() == DialogResult.OK)
+            {
+                //Ruta de la imagen
+                string rutaImagen = openFileDialog1.FileName;
+
+                // Aquí puedes trabajar con la ruta de la imagen seleccionada, por ejemplo, cargarla en un PictureBox
+                FotoOriginalPictureBox.Image = Image.FromFile(rutaImagen);
+            }
+        }
+
+        private void FiltroPixeladoBtn_Click(object sender, EventArgs e)
+        {
+            Image imagenConFiltro = (Image)FotoOriginalPictureBox.Image.Clone();
+
+            // Aplicar el filtro de pixelado
+            imagenConFiltro = FilterBitmap(imagenConFiltro, 10); // Puedes ajustar el tamaño del pixelado aquí
+
+            // Mostrar la imagen con filtro en el PictureBox FotoConFiltroPictureBox
+            FotoFiltroPicBox.Image = imagenConFiltro;
+        }
+
+        //Pixelado de imagen
+        private Bitmap FilterBitmap(Image image, int pixelSize)
+        {
+            Bitmap bmp = new Bitmap(image);
+            for (int y = 0; y < bmp.Height; y += pixelSize)
+            {
+                for (int x = 0; x < bmp.Width; x += pixelSize)
+                {
+                    Color pixelColor = bmp.GetPixel(x, y);
+                    for (int yy = y; yy < y + pixelSize && yy < bmp.Height; yy++)
+                    {
+                        for (int xx = x; xx < x + pixelSize && xx < bmp.Width; xx++)
+                        {
+                            bmp.SetPixel(xx, yy, pixelColor);
+                        }
+                    }
+                }
+            }
+            return bmp;
+        }
+
     }
 }
