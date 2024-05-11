@@ -7,11 +7,16 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Emgu.CV;
+using Emgu.CV.Structure;
 
 namespace WindowsFormsApp1
 {
     public partial class Fotografias : Form
     {
+
+        private Image<Bgr, byte> originalImage;
+        private Image<Bgr, byte> editedImage;
         public Fotografias()
         {
             InitializeComponent();
@@ -47,6 +52,7 @@ namespace WindowsFormsApp1
 
         private void FiltroPixeladoBtn_Click(object sender, EventArgs e)
         {
+            FiltroPixeladoBtn.BackColor = Color.Magenta;
             Image imagenConFiltro = (Image)FotoOriginalPictureBox.Image.Clone();
 
             // Aplicar el filtro de pixelado
@@ -77,5 +83,46 @@ namespace WindowsFormsApp1
             return bmp;
         }
 
+        //private void ApplyChanges(object sender, EventArgs e)
+        //{
+        //    editedImage._EqualizeHist();
+
+        //    // Mostrar la imagen editada en un PictureBox
+        //    FotoFiltroPicBox.Image = editedImage.Bitmap;
+
+        //    // Calcular y mostrar el histograma de la imagen editada
+        //    CalculateAndDisplayHistogram(editedImage);
+        //}
+
+        //private void CalculateAndDisplayHistogram(Image<Bgr, byte> image)
+        //{
+        //    // Calcular el histograma de la imagen
+        //    DenseHistogram histogram = new DenseHistogram(256, new RangeF(0, 256));
+        //    histogram.Calculate(new Image<Gray, byte>[] { image[0], image[1], image[2] }, false, null);
+
+        //    // Normalizar el histograma para mostrarlo correctamente en un PictureBox
+        //    Mat histMat = new Mat();
+        //    histogram.CopyTo(histMat);
+        //    CvInvoke.Normalize(histMat, histMat, 0, 255, Emgu.CV.CvEnum.NormType.MinMax);
+
+        //    // Convertir el histograma a una imagen para mostrarlo en un PictureBox
+        //    Image<Gray, byte> histImage = histMat.ToImage<Gray, byte>();
+        //    histogramBox1.Image = histImage.Bitmap;
+        //}
+
+
+        private void Fotografias_Load(object sender, EventArgs e)
+        {
+         
+            Bitmap imagenBlanca = new Bitmap(100, 100); 
+            using (Graphics g = Graphics.FromImage(imagenBlanca))
+            {
+                g.Clear(Color.White);
+            }
+
+            // Asignar la imagen blanca a los PictureBox
+            FotoOriginalPictureBox.Image = imagenBlanca;
+            FotoFiltroPicBox.Image = imagenBlanca;
+        }
     }
 }

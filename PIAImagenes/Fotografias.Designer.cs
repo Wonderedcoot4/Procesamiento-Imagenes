@@ -39,7 +39,6 @@ namespace WindowsFormsApp1
             this.button7 = new System.Windows.Forms.Button();
             this.button8 = new System.Windows.Forms.Button();
             this.button10 = new System.Windows.Forms.Button();
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.trackBar1 = new System.Windows.Forms.TrackBar();
             this.button2 = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
@@ -47,10 +46,11 @@ namespace WindowsFormsApp1
             this.button16 = new System.Windows.Forms.Button();
             this.button17 = new System.Windows.Forms.Button();
             this.FotoFiltroPicBox = new System.Windows.Forms.PictureBox();
+            this.HistogramPicBox = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.FotoOriginalPictureBox)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.FotoFiltroPicBox)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.HistogramPicBox)).BeginInit();
             this.SuspendLayout();
             // 
             // FotoOriginalPictureBox
@@ -119,7 +119,7 @@ namespace WindowsFormsApp1
             // 
             // button6
             // 
-            this.button6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
+            this.button6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.button6.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.button6.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button6.Location = new System.Drawing.Point(1667, 12);
@@ -164,17 +164,6 @@ namespace WindowsFormsApp1
             this.button10.TabIndex = 12;
             this.button10.Text = "Gradiante";
             this.button10.UseVisualStyleBackColor = false;
-            // 
-            // pictureBox2
-            // 
-            this.pictureBox2.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.pictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox2.Image")));
-            this.pictureBox2.Location = new System.Drawing.Point(655, 213);
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(191, 153);
-            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox2.TabIndex = 33;
-            this.pictureBox2.TabStop = false;
             // 
             // trackBar1
             // 
@@ -255,6 +244,14 @@ namespace WindowsFormsApp1
             this.FotoFiltroPicBox.TabIndex = 35;
             this.FotoFiltroPicBox.TabStop = false;
             // 
+            // HistogramPicBox
+            // 
+            this.HistogramPicBox.Location = new System.Drawing.Point(607, 117);
+            this.HistogramPicBox.Name = "HistogramPicBox";
+            this.HistogramPicBox.Size = new System.Drawing.Size(265, 249);
+            this.HistogramPicBox.TabIndex = 36;
+            this.HistogramPicBox.TabStop = false;
+            // 
             // Fotografias
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -262,9 +259,9 @@ namespace WindowsFormsApp1
             this.AutoSize = true;
             this.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.ClientSize = new System.Drawing.Size(1866, 664);
+            this.Controls.Add(this.HistogramPicBox);
             this.Controls.Add(this.FotoFiltroPicBox);
             this.Controls.Add(this.trackBar1);
-            this.Controls.Add(this.pictureBox2);
             this.Controls.Add(this.button17);
             this.Controls.Add(this.button16);
             this.Controls.Add(this.button15);
@@ -283,10 +280,11 @@ namespace WindowsFormsApp1
             this.Name = "Fotografias";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Fotografias";
+            this.Load += new System.EventHandler(this.Fotografias_Load);
             ((System.ComponentModel.ISupportInitialize)(this.FotoOriginalPictureBox)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.FotoFiltroPicBox)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.HistogramPicBox)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -303,7 +301,6 @@ namespace WindowsFormsApp1
         private System.Windows.Forms.Button button7;
         private System.Windows.Forms.Button button8;
         private System.Windows.Forms.Button button10;
-        private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.TrackBar trackBar1;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button button4;
@@ -311,5 +308,6 @@ namespace WindowsFormsApp1
         private System.Windows.Forms.Button button16;
         private System.Windows.Forms.Button button17;
         private System.Windows.Forms.PictureBox FotoFiltroPicBox;
+        private System.Windows.Forms.PictureBox HistogramPicBox;
     }
 }
