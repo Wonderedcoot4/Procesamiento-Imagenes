@@ -10,16 +10,30 @@ using System.Windows.Forms;
 using Emgu.CV;
 using Emgu.CV.Structure;
 
+
 namespace WindowsFormsApp1
 {
     public partial class Fotografias : Form
     {
-
+        private Bitmap original;
+        private Bitmap resultante;
+        private int[] histograma = new int[256];
+        private int[,] conv3x3 = new int[3, 3];
+        private int factor;
+        private int offset;
         private Image<Bgr, byte> originalImage;
         private Image<Bgr, byte> editedImage;
+        private HistoForm Histoform;
+
+        private int anchoVentana, altoVentana;
         public Fotografias()
         {
             InitializeComponent();
+
+            resultante = new Bitmap(FotoFiltroPicBox.Width, FotoFiltroPicBox.Height);
+            anchoVentana = 800;
+            altoVentana = 600;
+            
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -44,9 +58,17 @@ namespace WindowsFormsApp1
             {
                 //Ruta de la imagen
                 string rutaImagen = openFileDialog1.FileName;
-
+                original = (Bitmap)(Bitmap.FromFile(openFileDialog1.FileName));
                 // Aquí puedes trabajar con la ruta de la imagen seleccionada, por ejemplo, cargarla en un PictureBox
                 FotoOriginalPictureBox.Image = Image.FromFile(rutaImagen);
+                original = (Bitmap)FotoOriginalPictureBox.Image;
+                anchoVentana = original.Width;
+                altoVentana = original.Height;
+                
+
+                resultante = original;
+
+                this.Invalidate();
             }
         }
 
@@ -56,7 +78,7 @@ namespace WindowsFormsApp1
             Image imagenConFiltro = (Image)FotoOriginalPictureBox.Image.Clone();
 
             // Aplicar el filtro de pixelado
-            imagenConFiltro = FilterBitmap(imagenConFiltro, 10); // Puedes ajustar el tamaño del pixelado aquí
+            imagenConFiltro = FilterBitmap(imagenConFiltro, 20);
 
             // Mostrar la imagen con filtro en el PictureBox FotoConFiltroPictureBox
             FotoFiltroPicBox.Image = imagenConFiltro;
@@ -80,37 +102,9 @@ namespace WindowsFormsApp1
                     }
                 }
             }
+            resultante = bmp;
             return bmp;
         }
-
-        //private void ApplyChanges(object sender, EventArgs e)
-        //{
-        //    editedImage._EqualizeHist();
-
-        //    // Mostrar la imagen editada en un PictureBox
-        //    FotoFiltroPicBox.Image = editedImage.Bitmap;
-
-        //    // Calcular y mostrar el histograma de la imagen editada
-        //    CalculateAndDisplayHistogram(editedImage);
-        //}
-
-        //private void CalculateAndDisplayHistogram(Image<Bgr, byte> image)
-        //{
-        //    // Calcular el histograma de la imagen
-        //    DenseHistogram histogram = new DenseHistogram(256, new RangeF(0, 256));
-        //    histogram.Calculate(new Image<Gray, byte>[] { image[0], image[1], image[2] }, false, null);
-
-        //    // Normalizar el histograma para mostrarlo correctamente en un PictureBox
-        //    Mat histMat = new Mat();
-        //    histogram.CopyTo(histMat);
-        //    CvInvoke.Normalize(histMat, histMat, 0, 255, Emgu.CV.CvEnum.NormType.MinMax);
-
-        //    // Convertir el histograma a una imagen para mostrarlo en un PictureBox
-        //    Image<Gray, byte> histImage = histMat.ToImage<Gray, byte>();
-        //    histogramBox1.Image = histImage.Bitmap;
-        //}
-
-
         private void Fotografias_Load(object sender, EventArgs e)
         {
          
@@ -123,6 +117,45 @@ namespace WindowsFormsApp1
             // Asignar la imagen blanca a los PictureBox
             FotoOriginalPictureBox.Image = imagenBlanca;
             FotoFiltroPicBox.Image = imagenBlanca;
+            
+        }
+
+        private void HistoButton_Click(object sender, EventArgs e)
+        {
+            //HistoButton_Click(sender, e);
+            int x = 0;
+            int y = 0;
+            Color rColor = new Color();
+
+            for(x = 0; x < original.Width; x++)
+            {
+                for(y=0; y < original.Height; y++)
+                {
+                    rColor = resultante.GetPixel(x, y);
+                    histograma[rColor.R]++;
+                }
+            }
+
+            HistoForm hForm = new HistoForm(histograma);
+
+            hForm.Show();
+        }
+
+        private void SaveImgBttn_Click(object sender, EventArgs e)
+        {
+            SaveFileDialog SaveFileDialog1 = new SaveFileDialog();
+            SaveFileDialog1.Filter = "Archivos de imagen PNG (*.png)|*.png|Todos los archivos (*.*)|*.*";
+            SaveFileDialog1.Title = "Guardar imagen";
+            SaveFileDialog1.DefaultExt = "png";
+            if (SaveFileDialog1.ShowDialog() == DialogResult.OK)
+            {
+                resultante.Save(SaveFileDialog1.FileName, System.Drawing.Imaging.ImageFormat.Png);
+            }
+        }
+
+        private void FotoFiltroPicBox_Paint(object sender, PaintEventArgs e)
+        {
+  
         }
     }
 }

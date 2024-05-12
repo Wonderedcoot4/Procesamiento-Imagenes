@@ -32,10 +32,10 @@ namespace WindowsFormsApp1
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Fotografias));
             this.FotoOriginalPictureBox = new System.Windows.Forms.PictureBox();
             this.SubirFotoBtn = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
+            this.SaveImgBttn = new System.Windows.Forms.Button();
             this.StartScreenBttn = new System.Windows.Forms.Button();
             this.FiltroPixeladoBtn = new System.Windows.Forms.Button();
-            this.button6 = new System.Windows.Forms.Button();
+            this.GrisFiltroBttn = new System.Windows.Forms.Button();
             this.button7 = new System.Windows.Forms.Button();
             this.button8 = new System.Windows.Forms.Button();
             this.button10 = new System.Windows.Forms.Button();
@@ -47,6 +47,7 @@ namespace WindowsFormsApp1
             this.button17 = new System.Windows.Forms.Button();
             this.FotoFiltroPicBox = new System.Windows.Forms.PictureBox();
             this.HistogramPicBox = new System.Windows.Forms.PictureBox();
+            this.HistoButton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.FotoOriginalPictureBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.FotoFiltroPicBox)).BeginInit();
@@ -79,17 +80,18 @@ namespace WindowsFormsApp1
             this.SubirFotoBtn.UseVisualStyleBackColor = false;
             this.SubirFotoBtn.Click += new System.EventHandler(this.SubirFotoBtn_Click);
             // 
-            // button3
+            // SaveImgBttn
             // 
-            this.button3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.button3.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button3.Location = new System.Drawing.Point(385, 389);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(187, 92);
-            this.button3.TabIndex = 6;
-            this.button3.Text = "Guardar Foto";
-            this.button3.UseVisualStyleBackColor = false;
+            this.SaveImgBttn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.SaveImgBttn.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.SaveImgBttn.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.SaveImgBttn.Location = new System.Drawing.Point(385, 389);
+            this.SaveImgBttn.Name = "SaveImgBttn";
+            this.SaveImgBttn.Size = new System.Drawing.Size(187, 92);
+            this.SaveImgBttn.TabIndex = 6;
+            this.SaveImgBttn.Text = "Guardar Foto";
+            this.SaveImgBttn.UseVisualStyleBackColor = false;
+            this.SaveImgBttn.Click += new System.EventHandler(this.SaveImgBttn_Click);
             // 
             // StartScreenBttn
             // 
@@ -117,17 +119,17 @@ namespace WindowsFormsApp1
             this.FiltroPixeladoBtn.UseVisualStyleBackColor = false;
             this.FiltroPixeladoBtn.Click += new System.EventHandler(this.FiltroPixeladoBtn_Click);
             // 
-            // button6
+            // GrisFiltroBttn
             // 
-            this.button6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.button6.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.button6.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button6.Location = new System.Drawing.Point(1667, 12);
-            this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(187, 92);
-            this.button6.TabIndex = 9;
-            this.button6.Text = "Gris";
-            this.button6.UseVisualStyleBackColor = false;
+            this.GrisFiltroBttn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.GrisFiltroBttn.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.GrisFiltroBttn.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.GrisFiltroBttn.Location = new System.Drawing.Point(1667, 12);
+            this.GrisFiltroBttn.Name = "GrisFiltroBttn";
+            this.GrisFiltroBttn.Size = new System.Drawing.Size(187, 92);
+            this.GrisFiltroBttn.TabIndex = 9;
+            this.GrisFiltroBttn.Text = "Gris";
+            this.GrisFiltroBttn.UseVisualStyleBackColor = false;
             // 
             // button7
             // 
@@ -243,6 +245,7 @@ namespace WindowsFormsApp1
             this.FotoFiltroPicBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.FotoFiltroPicBox.TabIndex = 35;
             this.FotoFiltroPicBox.TabStop = false;
+            this.FotoFiltroPicBox.Paint += new System.Windows.Forms.PaintEventHandler(this.FotoFiltroPicBox_Paint);
             // 
             // HistogramPicBox
             // 
@@ -252,6 +255,19 @@ namespace WindowsFormsApp1
             this.HistogramPicBox.TabIndex = 36;
             this.HistogramPicBox.TabStop = false;
             // 
+            // HistoButton
+            // 
+            this.HistoButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.HistoButton.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.HistoButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.HistoButton.Location = new System.Drawing.Point(1045, 389);
+            this.HistoButton.Name = "HistoButton";
+            this.HistoButton.Size = new System.Drawing.Size(187, 92);
+            this.HistoButton.TabIndex = 37;
+            this.HistoButton.Text = "Revisar Histograma";
+            this.HistoButton.UseVisualStyleBackColor = false;
+            this.HistoButton.Click += new System.EventHandler(this.HistoButton_Click);
+            // 
             // Fotografias
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -259,6 +275,7 @@ namespace WindowsFormsApp1
             this.AutoSize = true;
             this.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.ClientSize = new System.Drawing.Size(1866, 664);
+            this.Controls.Add(this.HistoButton);
             this.Controls.Add(this.HistogramPicBox);
             this.Controls.Add(this.FotoFiltroPicBox);
             this.Controls.Add(this.trackBar1);
@@ -270,10 +287,10 @@ namespace WindowsFormsApp1
             this.Controls.Add(this.button10);
             this.Controls.Add(this.button7);
             this.Controls.Add(this.button8);
-            this.Controls.Add(this.button6);
+            this.Controls.Add(this.GrisFiltroBttn);
             this.Controls.Add(this.FiltroPixeladoBtn);
             this.Controls.Add(this.StartScreenBttn);
-            this.Controls.Add(this.button3);
+            this.Controls.Add(this.SaveImgBttn);
             this.Controls.Add(this.SubirFotoBtn);
             this.Controls.Add(this.FotoOriginalPictureBox);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
@@ -294,10 +311,10 @@ namespace WindowsFormsApp1
 
         private System.Windows.Forms.PictureBox FotoOriginalPictureBox;
         private System.Windows.Forms.Button SubirFotoBtn;
-        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button SaveImgBttn;
         private System.Windows.Forms.Button StartScreenBttn;
         private System.Windows.Forms.Button FiltroPixeladoBtn;
-        private System.Windows.Forms.Button button6;
+        private System.Windows.Forms.Button GrisFiltroBttn;
         private System.Windows.Forms.Button button7;
         private System.Windows.Forms.Button button8;
         private System.Windows.Forms.Button button10;
@@ -309,5 +326,6 @@ namespace WindowsFormsApp1
         private System.Windows.Forms.Button button17;
         private System.Windows.Forms.PictureBox FotoFiltroPicBox;
         private System.Windows.Forms.PictureBox HistogramPicBox;
+        private System.Windows.Forms.Button HistoButton;
     }
 }
