@@ -38,7 +38,7 @@ namespace WindowsFormsApp1
             this.GrisFiltroBttn = new System.Windows.Forms.Button();
             this.NegativoFiltroBttn = new System.Windows.Forms.Button();
             this.button8 = new System.Windows.Forms.Button();
-            this.button10 = new System.Windows.Forms.Button();
+            this.GradianteFiltroBttn = new System.Windows.Forms.Button();
             this.trackBarEdicion = new System.Windows.Forms.TrackBar();
             this.button2 = new System.Windows.Forms.Button();
             this.AberracionCromaBttn = new System.Windows.Forms.Button();
@@ -146,6 +146,8 @@ namespace WindowsFormsApp1
             this.NegativoFiltroBttn.Text = "Negativo";
             this.NegativoFiltroBttn.UseVisualStyleBackColor = false;
             this.NegativoFiltroBttn.Click += new System.EventHandler(this.NegativoFiltroBttn_Click);
+            this.NegativoFiltroBttn.MouseLeave += new System.EventHandler(this.NegativoFiltroBttn_MouseLeave);
+            this.NegativoFiltroBttn.MouseHover += new System.EventHandler(this.NegativoFiltroBttn_MouseHover);
             // 
             // button8
             // 
@@ -159,17 +161,20 @@ namespace WindowsFormsApp1
             this.button8.Text = "Sobel";
             this.button8.UseVisualStyleBackColor = false;
             // 
-            // button10
+            // GradianteFiltroBttn
             // 
-            this.button10.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.button10.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.button10.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button10.Location = new System.Drawing.Point(1415, 244);
-            this.button10.Name = "button10";
-            this.button10.Size = new System.Drawing.Size(187, 92);
-            this.button10.TabIndex = 12;
-            this.button10.Text = "Gradiante";
-            this.button10.UseVisualStyleBackColor = false;
+            this.GradianteFiltroBttn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.GradianteFiltroBttn.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.GradianteFiltroBttn.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.GradianteFiltroBttn.Location = new System.Drawing.Point(1415, 244);
+            this.GradianteFiltroBttn.Name = "GradianteFiltroBttn";
+            this.GradianteFiltroBttn.Size = new System.Drawing.Size(187, 92);
+            this.GradianteFiltroBttn.TabIndex = 12;
+            this.GradianteFiltroBttn.Text = "Gradiante";
+            this.GradianteFiltroBttn.UseVisualStyleBackColor = false;
+            this.GradianteFiltroBttn.Click += new System.EventHandler(this.GradianteFiltroBttn_Click);
+            this.GradianteFiltroBttn.MouseLeave += new System.EventHandler(this.GradianteFiltroBttn_MouseLeave);
+            this.GradianteFiltroBttn.MouseHover += new System.EventHandler(this.GradianteFiltroBttn_MouseHover);
             // 
             // trackBarEdicion
             // 
@@ -182,7 +187,7 @@ namespace WindowsFormsApp1
             this.trackBarEdicion.TabIndex = 34;
             this.trackBarEdicion.TickFrequency = 0;
             this.trackBarEdicion.TickStyle = System.Windows.Forms.TickStyle.None;
-            this.trackBarEdicion.Value = 1;
+            this.trackBarEdicion.Value = 10;
             // 
             // button2
             // 
@@ -310,7 +315,7 @@ namespace WindowsFormsApp1
             this.Controls.Add(this.ColorizarFiltroBttn);
             this.Controls.Add(this.AberracionCromaBttn);
             this.Controls.Add(this.button2);
-            this.Controls.Add(this.button10);
+            this.Controls.Add(this.GradianteFiltroBttn);
             this.Controls.Add(this.NegativoFiltroBttn);
             this.Controls.Add(this.button8);
             this.Controls.Add(this.GrisFiltroBttn);
@@ -343,7 +348,7 @@ namespace WindowsFormsApp1
         private System.Windows.Forms.Button GrisFiltroBttn;
         private System.Windows.Forms.Button NegativoFiltroBttn;
         private System.Windows.Forms.Button button8;
-        private System.Windows.Forms.Button button10;
+        private System.Windows.Forms.Button GradianteFiltroBttn;
         private System.Windows.Forms.TrackBar trackBarEdicion;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button AberracionCromaBttn;

@@ -204,7 +204,7 @@ namespace WindowsFormsApp1
             int r = 0;
             int g = 0;
             int b = 0;
-
+            resultante = original;
             resultante = new Bitmap(original.Width, original.Height);
 
             for ( x = 0; x < original.Width; x++)
@@ -251,16 +251,6 @@ namespace WindowsFormsApp1
 
         private void ColorizarFiltroBttn_Click(object sender, EventArgs e)
         {
-            ColorizarFiltroBttn.BackColor = Color.Magenta;
-        }
-
-        private void ColorizarFiltroBttn_MouseHover(object sender, EventArgs e)
-        {
-            ColorizarFiltroBttn.BackColor = Color.FromArgb(192, 0, 0);
-        }
-
-        private void ColorizarFiltroBttn_MouseLeave(object sender, EventArgs e)
-        {
             resultante = original; //Quitale esto si quieres que los filtros se acumulen, lo agregue en todos los filtros
             int x = 0;
             int y = 0;
@@ -276,7 +266,7 @@ namespace WindowsFormsApp1
 
             for (x = 0; x < original.Width; x++)
             {
-                for ( y = 0; y < original.Height; y++)
+                for (y = 0; y < original.Height; y++)
                 {
                     MyColor = resultante.GetPixel(x, y);
                     r = (int)(MyColor.R * rc);
@@ -287,6 +277,16 @@ namespace WindowsFormsApp1
 
             }
             FotoFiltroPicBox.Image = resultante;
+        }
+
+        private void ColorizarFiltroBttn_MouseHover(object sender, EventArgs e)
+        {
+            ColorizarFiltroBttn.BackColor = Color.Magenta;
+        }
+
+        private void ColorizarFiltroBttn_MouseLeave(object sender, EventArgs e)
+        {
+            ColorizarFiltroBttn.BackColor = Color.FromArgb(192, 0, 0);
         }
 
         private void NegativoFiltroBttn_Click(object sender, EventArgs e)
@@ -311,6 +311,92 @@ namespace WindowsFormsApp1
                 }
             }
             FotoFiltroPicBox.Image = resultante;
+        }
+
+        private void NegativoFiltroBttn_MouseHover(object sender, EventArgs e)
+        {
+            NegativoFiltroBttn.BackColor = Color.Magenta;
+        }
+
+        private void NegativoFiltroBttn_MouseLeave(object sender, EventArgs e)
+        {
+            NegativoFiltroBttn.BackColor = Color.FromArgb(192, 0, 0);
+        }
+
+        private void GradianteFiltroBttn_Click(object sender, EventArgs e)
+        {
+            resultante = original;
+            float r1 = 130;
+            float g1 = 230;
+            float b1 = 120;
+
+            float r2 = 230;
+            float g2 = 100;
+            float b2 = 200;
+
+            int r = 0;
+            int g = 0;
+            int b = 0;
+            //Diferencias de intensidad
+            float dr = (r2 - r1) / original.Width;
+            float dg = (g2 - g1) / original.Width;
+            float db = (b2 - b1) / original.Width;
+
+            int x = 0;
+            int y = 0;
+
+            Color oColor;
+
+            for ( x = 0; x < original.Width; x++)
+            {
+                for ( y = 0; y < original.Height; y++)
+                {
+                    oColor = resultante.GetPixel(x, y);
+
+                    r = (int)((r1 / 255.0f) * oColor.R);
+                    g = (int)((g1 / 255.0f) * oColor.G);
+                    b = (int)((b1 / 255.0f) * oColor.B);
+
+                    if (r > 255)
+                    {
+                        r = 255;
+                    }
+                    else if (r < 0)
+                        r = 0;
+
+                    if (g > 255)
+                    {
+                        g = 255;
+                    }
+                    else if (g < 0)
+                        g = 0;
+
+                    if (b > 255)
+                    {
+                        b = 255;
+                    }
+                    else if (b < 0)
+                        b = 0;
+
+
+                    resultante.SetPixel(x, y, Color.FromArgb(r, g, b));
+                }
+
+                r1 = (r1 + dr);
+                g1 = (g1 + dg);
+                b1 = (b1 + db);
+            }
+            FotoFiltroPicBox.Image = resultante;
+        }
+
+        private void GradianteFiltroBttn_MouseHover(object sender, EventArgs e)
+        {
+            GradianteFiltroBttn.BackColor = Color.Magenta; 
+        }
+
+        private void GradianteFiltroBttn_MouseLeave(object sender, EventArgs e)
+        {
+            GradianteFiltroBttn.BackColor = Color.FromArgb(192, 0, 0);
         }
 
         private void FotoFiltroPicBox_Paint(object sender, PaintEventArgs e)
