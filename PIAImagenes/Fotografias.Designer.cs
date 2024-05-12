@@ -36,13 +36,13 @@ namespace WindowsFormsApp1
             this.StartScreenBttn = new System.Windows.Forms.Button();
             this.FiltroPixeladoBtn = new System.Windows.Forms.Button();
             this.GrisFiltroBttn = new System.Windows.Forms.Button();
-            this.button7 = new System.Windows.Forms.Button();
+            this.NegativoFiltroBttn = new System.Windows.Forms.Button();
             this.button8 = new System.Windows.Forms.Button();
             this.button10 = new System.Windows.Forms.Button();
             this.trackBarEdicion = new System.Windows.Forms.TrackBar();
             this.button2 = new System.Windows.Forms.Button();
             this.AberracionCromaBttn = new System.Windows.Forms.Button();
-            this.button15 = new System.Windows.Forms.Button();
+            this.ColorizarFiltroBttn = new System.Windows.Forms.Button();
             this.button16 = new System.Windows.Forms.Button();
             this.button17 = new System.Windows.Forms.Button();
             this.FotoFiltroPicBox = new System.Windows.Forms.PictureBox();
@@ -134,17 +134,18 @@ namespace WindowsFormsApp1
             this.GrisFiltroBttn.Text = "Gris";
             this.GrisFiltroBttn.UseVisualStyleBackColor = false;
             // 
-            // button7
+            // NegativoFiltroBttn
             // 
-            this.button7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.button7.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.button7.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button7.Location = new System.Drawing.Point(1667, 126);
-            this.button7.Name = "button7";
-            this.button7.Size = new System.Drawing.Size(187, 92);
-            this.button7.TabIndex = 11;
-            this.button7.Text = "Negativo";
-            this.button7.UseVisualStyleBackColor = false;
+            this.NegativoFiltroBttn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.NegativoFiltroBttn.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.NegativoFiltroBttn.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.NegativoFiltroBttn.Location = new System.Drawing.Point(1667, 126);
+            this.NegativoFiltroBttn.Name = "NegativoFiltroBttn";
+            this.NegativoFiltroBttn.Size = new System.Drawing.Size(187, 92);
+            this.NegativoFiltroBttn.TabIndex = 11;
+            this.NegativoFiltroBttn.Text = "Negativo";
+            this.NegativoFiltroBttn.UseVisualStyleBackColor = false;
+            this.NegativoFiltroBttn.Click += new System.EventHandler(this.NegativoFiltroBttn_Click);
             // 
             // button8
             // 
@@ -210,17 +211,20 @@ namespace WindowsFormsApp1
             this.AberracionCromaBttn.MouseLeave += new System.EventHandler(this.AberracionCromaBttn_MouseLeave);
             this.AberracionCromaBttn.MouseHover += new System.EventHandler(this.AberracionCromaBttn_MouseHover);
             // 
-            // button15
+            // ColorizarFiltroBttn
             // 
-            this.button15.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.button15.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.button15.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button15.Location = new System.Drawing.Point(1667, 364);
-            this.button15.Name = "button15";
-            this.button15.Size = new System.Drawing.Size(187, 92);
-            this.button15.TabIndex = 15;
-            this.button15.Text = "Colorizar";
-            this.button15.UseVisualStyleBackColor = false;
+            this.ColorizarFiltroBttn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.ColorizarFiltroBttn.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.ColorizarFiltroBttn.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ColorizarFiltroBttn.Location = new System.Drawing.Point(1667, 364);
+            this.ColorizarFiltroBttn.Name = "ColorizarFiltroBttn";
+            this.ColorizarFiltroBttn.Size = new System.Drawing.Size(187, 92);
+            this.ColorizarFiltroBttn.TabIndex = 15;
+            this.ColorizarFiltroBttn.Text = "Colorizar";
+            this.ColorizarFiltroBttn.UseVisualStyleBackColor = false;
+            this.ColorizarFiltroBttn.Click += new System.EventHandler(this.ColorizarFiltroBttn_Click);
+            this.ColorizarFiltroBttn.MouseLeave += new System.EventHandler(this.ColorizarFiltroBttn_MouseLeave);
+            this.ColorizarFiltroBttn.MouseHover += new System.EventHandler(this.ColorizarFiltroBttn_MouseHover);
             // 
             // button16
             // 
@@ -303,11 +307,11 @@ namespace WindowsFormsApp1
             this.Controls.Add(this.trackBarEdicion);
             this.Controls.Add(this.button17);
             this.Controls.Add(this.button16);
-            this.Controls.Add(this.button15);
+            this.Controls.Add(this.ColorizarFiltroBttn);
             this.Controls.Add(this.AberracionCromaBttn);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button10);
-            this.Controls.Add(this.button7);
+            this.Controls.Add(this.NegativoFiltroBttn);
             this.Controls.Add(this.button8);
             this.Controls.Add(this.GrisFiltroBttn);
             this.Controls.Add(this.FiltroPixeladoBtn);
@@ -337,13 +341,13 @@ namespace WindowsFormsApp1
         private System.Windows.Forms.Button StartScreenBttn;
         private System.Windows.Forms.Button FiltroPixeladoBtn;
         private System.Windows.Forms.Button GrisFiltroBttn;
-        private System.Windows.Forms.Button button7;
+        private System.Windows.Forms.Button NegativoFiltroBttn;
         private System.Windows.Forms.Button button8;
         private System.Windows.Forms.Button button10;
         private System.Windows.Forms.TrackBar trackBarEdicion;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button AberracionCromaBttn;
-        private System.Windows.Forms.Button button15;
+        private System.Windows.Forms.Button ColorizarFiltroBttn;
         private System.Windows.Forms.Button button16;
         private System.Windows.Forms.Button button17;
         private System.Windows.Forms.PictureBox FotoFiltroPicBox;

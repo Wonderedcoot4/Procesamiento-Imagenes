@@ -24,9 +24,6 @@ namespace WindowsFormsApp1
         private int[,] conv3x3 = new int[3, 3];
         private int factor;
         private int offset;
-        private Image<Bgr, byte> originalImage;
-        private Image<Bgr, byte> editedImage;
-        private HistoForm Histoform;
 
         private int anchoVentana, altoVentana;
         private int ValorTrackerBar;
@@ -86,6 +83,16 @@ namespace WindowsFormsApp1
 
         private void FiltroPixeladoBtn_Click(object sender, EventArgs e)
         {
+            resultante = original;
+            Bitmap imagenBlanca = new Bitmap(100, 100);
+            using (Graphics g = Graphics.FromImage(imagenBlanca))
+            {
+                g.Clear(Color.White);
+            }
+
+            // Asignar la imagen blanca a los PictureBox
+            FotoFiltroPicBox.Image = imagenBlanca;
+
             int valorTracker = ValorTrackerBar;
             //FiltroPixeladoBtn.BackColor = Color.Magenta;
             Image imagenConFiltro = (Image)FotoOriginalPictureBox.Image.Clone();
@@ -180,6 +187,16 @@ namespace WindowsFormsApp1
 
         private void AberracionCromaBttn_Click(object sender, EventArgs e)
         {
+            resultante = original;
+            Bitmap imagenBlanca = new Bitmap(100, 100);
+            Graphics gr;
+            using (gr = Graphics.FromImage(imagenBlanca))
+            {
+                gr.Clear(Color.White);
+            }
+
+            // Asignar la imagen blanca a los PictureBox
+            FotoFiltroPicBox.Image = imagenBlanca;
             int x = 0;
             int y = 0;
             int a = ValorTrackerBar;
@@ -217,7 +234,7 @@ namespace WindowsFormsApp1
                 }
 
             }
-            Bitmap bmpRes = resultante;
+            //Bitmap bmpRes = resultante;
             FotoFiltroPicBox.Image = resultante;
 
         }
@@ -230,6 +247,70 @@ namespace WindowsFormsApp1
         private void AberracionCromaBttn_MouseLeave(object sender, EventArgs e)
         {
             AberracionCromaBttn.BackColor = Color.FromArgb(192,0,0);
+        }
+
+        private void ColorizarFiltroBttn_Click(object sender, EventArgs e)
+        {
+            ColorizarFiltroBttn.BackColor = Color.Magenta;
+        }
+
+        private void ColorizarFiltroBttn_MouseHover(object sender, EventArgs e)
+        {
+            ColorizarFiltroBttn.BackColor = Color.FromArgb(192, 0, 0);
+        }
+
+        private void ColorizarFiltroBttn_MouseLeave(object sender, EventArgs e)
+        {
+            resultante = original; //Quitale esto si quieres que los filtros se acumulen, lo agregue en todos los filtros
+            int x = 0;
+            int y = 0;
+
+            double rc = 150 / 255.0;
+            double gc = 220 / 255.0;
+            double bc = 245 / 255.0;
+
+            Color MyColor = new Color();
+            int r = 0;
+            int g = 0;
+            int b = 0;
+
+            for (x = 0; x < original.Width; x++)
+            {
+                for ( y = 0; y < original.Height; y++)
+                {
+                    MyColor = resultante.GetPixel(x, y);
+                    r = (int)(MyColor.R * rc);
+                    g = (int)(MyColor.G * gc);
+                    b = (int)(MyColor.B * bc);
+                    resultante.SetPixel(x, y, Color.FromArgb(r, g, b));
+                }
+
+            }
+            FotoFiltroPicBox.Image = resultante;
+        }
+
+        private void NegativoFiltroBttn_Click(object sender, EventArgs e)
+        {
+            resultante = original;
+            int x = 0;
+            int y = 0;
+
+            Color rColor = new Color(); //Color resultante del filtro
+            Color oColor = new Color(); //Color original
+
+            for ( x = 0; x < original.Width; x++)
+            {
+                for ( y = 0; y < original.Height; y++)
+                {
+                    oColor = original.GetPixel(x, y);
+
+                    rColor = Color.FromArgb(255 - oColor.R, 255 - oColor.G, 255 - oColor.B);
+
+
+                    resultante.SetPixel(x, y, rColor);
+                }
+            }
+            FotoFiltroPicBox.Image = resultante;
         }
 
         private void FotoFiltroPicBox_Paint(object sender, PaintEventArgs e)
