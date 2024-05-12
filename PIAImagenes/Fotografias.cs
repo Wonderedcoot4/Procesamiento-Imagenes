@@ -29,6 +29,7 @@ namespace WindowsFormsApp1
         private HistoForm Histoform;
 
         private int anchoVentana, altoVentana;
+        private int ValorTrackerBar;
         public Fotografias()
         {
             InitializeComponent();
@@ -36,7 +37,15 @@ namespace WindowsFormsApp1
             resultante = new Bitmap(FotoFiltroPicBox.Width, FotoFiltroPicBox.Height);
             anchoVentana = 800;
             altoVentana = 600;
+            trackBarEdicion.ValueChanged += TrackerBar_ValueChanged;
             
+        }
+
+        private void TrackerBar_ValueChanged(object sender, EventArgs e)
+        {
+            // Actualizar la etiqueta con el valor seleccionado del TrackBar
+            label1.Text = "Valor seleccionado: " + trackBarEdicion.Value.ToString();
+            ValorTrackerBar = trackBarEdicion.Value;
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -77,11 +86,12 @@ namespace WindowsFormsApp1
 
         private void FiltroPixeladoBtn_Click(object sender, EventArgs e)
         {
-            FiltroPixeladoBtn.BackColor = Color.Magenta;
+            int valorTracker = ValorTrackerBar;
+            //FiltroPixeladoBtn.BackColor = Color.Magenta;
             Image imagenConFiltro = (Image)FotoOriginalPictureBox.Image.Clone();
 
             // Aplicar el filtro de pixelado
-            imagenConFiltro = FilterBitmap(imagenConFiltro, 20);
+            imagenConFiltro = FilterBitmap(imagenConFiltro, valorTracker);
 
             // Mostrar la imagen con filtro en el PictureBox FotoConFiltroPictureBox
             FotoFiltroPicBox.Image = imagenConFiltro;
@@ -156,6 +166,70 @@ namespace WindowsFormsApp1
             {
                 resultante.Save(SaveFileDialog1.FileName, System.Drawing.Imaging.ImageFormat.Png);
             }
+        }
+
+        private void FiltroPixeladoBtn_MouseHover(object sender, EventArgs e)
+        {
+            FiltroPixeladoBtn.BackColor = Color.Magenta;
+        }
+
+        private void FiltroPixeladoBtn_MouseLeave(object sender, EventArgs e)
+        {
+            FiltroPixeladoBtn.BackColor = Color.FromArgb(192,0,0);
+        }
+
+        private void AberracionCromaBttn_Click(object sender, EventArgs e)
+        {
+            int x = 0;
+            int y = 0;
+            int a = ValorTrackerBar;
+
+            int r = 0;
+            int g = 0;
+            int b = 0;
+
+            resultante = new Bitmap(original.Width, original.Height);
+
+            for ( x = 0; x < original.Width; x++)
+            {
+                for (y = 0; y < original.Height; y++)
+                {
+                    //Verde
+                    g = original.GetPixel(x, y).G;
+
+                    if (x + a < original.Width)
+                    {
+                        r = original.GetPixel(x + a, y).R;
+
+
+                    }
+                    else
+                        r = 0;
+
+                    if (x - a >= 0)
+                    {
+                        b = original.GetPixel(x - a, y).B;
+                    }
+                    else
+                        b = 0;
+
+                    resultante.SetPixel(x, y, Color.FromArgb(r, g, b));
+                }
+
+            }
+            Bitmap bmpRes = resultante;
+            FotoFiltroPicBox.Image = resultante;
+
+        }
+
+        private void AberracionCromaBttn_MouseHover(object sender, EventArgs e)
+        {
+            AberracionCromaBttn.BackColor = Color.Magenta;
+        }
+
+        private void AberracionCromaBttn_MouseLeave(object sender, EventArgs e)
+        {
+            AberracionCromaBttn.BackColor = Color.FromArgb(192,0,0);
         }
 
         private void FotoFiltroPicBox_Paint(object sender, PaintEventArgs e)

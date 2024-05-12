@@ -39,17 +39,18 @@ namespace WindowsFormsApp1
             this.button7 = new System.Windows.Forms.Button();
             this.button8 = new System.Windows.Forms.Button();
             this.button10 = new System.Windows.Forms.Button();
-            this.trackBar1 = new System.Windows.Forms.TrackBar();
+            this.trackBarEdicion = new System.Windows.Forms.TrackBar();
             this.button2 = new System.Windows.Forms.Button();
-            this.button4 = new System.Windows.Forms.Button();
+            this.AberracionCromaBttn = new System.Windows.Forms.Button();
             this.button15 = new System.Windows.Forms.Button();
             this.button16 = new System.Windows.Forms.Button();
             this.button17 = new System.Windows.Forms.Button();
             this.FotoFiltroPicBox = new System.Windows.Forms.PictureBox();
             this.HistogramPicBox = new System.Windows.Forms.PictureBox();
             this.HistoButton = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.FotoOriginalPictureBox)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.trackBarEdicion)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.FotoFiltroPicBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.HistogramPicBox)).BeginInit();
             this.SuspendLayout();
@@ -118,6 +119,8 @@ namespace WindowsFormsApp1
             this.FiltroPixeladoBtn.Text = "Pixelado";
             this.FiltroPixeladoBtn.UseVisualStyleBackColor = false;
             this.FiltroPixeladoBtn.Click += new System.EventHandler(this.FiltroPixeladoBtn_Click);
+            this.FiltroPixeladoBtn.MouseLeave += new System.EventHandler(this.FiltroPixeladoBtn_MouseLeave);
+            this.FiltroPixeladoBtn.MouseHover += new System.EventHandler(this.FiltroPixeladoBtn_MouseHover);
             // 
             // GrisFiltroBttn
             // 
@@ -167,13 +170,18 @@ namespace WindowsFormsApp1
             this.button10.Text = "Gradiante";
             this.button10.UseVisualStyleBackColor = false;
             // 
-            // trackBar1
+            // trackBarEdicion
             // 
-            this.trackBar1.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.trackBar1.Location = new System.Drawing.Point(631, 436);
-            this.trackBar1.Name = "trackBar1";
-            this.trackBar1.Size = new System.Drawing.Size(231, 45);
-            this.trackBar1.TabIndex = 34;
+            this.trackBarEdicion.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.trackBarEdicion.Location = new System.Drawing.Point(631, 436);
+            this.trackBarEdicion.Maximum = 100;
+            this.trackBarEdicion.Minimum = 1;
+            this.trackBarEdicion.Name = "trackBarEdicion";
+            this.trackBarEdicion.Size = new System.Drawing.Size(342, 45);
+            this.trackBarEdicion.TabIndex = 34;
+            this.trackBarEdicion.TickFrequency = 0;
+            this.trackBarEdicion.TickStyle = System.Windows.Forms.TickStyle.None;
+            this.trackBarEdicion.Value = 1;
             // 
             // button2
             // 
@@ -187,17 +195,20 @@ namespace WindowsFormsApp1
             this.button2.Text = "Canal Rojo";
             this.button2.UseVisualStyleBackColor = false;
             // 
-            // button4
+            // AberracionCromaBttn
             // 
-            this.button4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.button4.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.button4.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button4.Location = new System.Drawing.Point(1415, 364);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(187, 92);
-            this.button4.TabIndex = 14;
-            this.button4.Text = "Aberracion";
-            this.button4.UseVisualStyleBackColor = false;
+            this.AberracionCromaBttn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.AberracionCromaBttn.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.AberracionCromaBttn.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.AberracionCromaBttn.Location = new System.Drawing.Point(1415, 364);
+            this.AberracionCromaBttn.Name = "AberracionCromaBttn";
+            this.AberracionCromaBttn.Size = new System.Drawing.Size(187, 92);
+            this.AberracionCromaBttn.TabIndex = 14;
+            this.AberracionCromaBttn.Text = "Aberracion";
+            this.AberracionCromaBttn.UseVisualStyleBackColor = false;
+            this.AberracionCromaBttn.Click += new System.EventHandler(this.AberracionCromaBttn_Click);
+            this.AberracionCromaBttn.MouseLeave += new System.EventHandler(this.AberracionCromaBttn_MouseLeave);
+            this.AberracionCromaBttn.MouseHover += new System.EventHandler(this.AberracionCromaBttn_MouseHover);
             // 
             // button15
             // 
@@ -268,6 +279,16 @@ namespace WindowsFormsApp1
             this.HistoButton.UseVisualStyleBackColor = false;
             this.HistoButton.Click += new System.EventHandler(this.HistoButton_Click);
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.label1.Location = new System.Drawing.Point(631, 398);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(52, 13);
+            this.label1.TabIndex = 38;
+            this.label1.Text = "Valor = 0;";
+            // 
             // Fotografias
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -275,14 +296,15 @@ namespace WindowsFormsApp1
             this.AutoSize = true;
             this.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.ClientSize = new System.Drawing.Size(1866, 664);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.HistoButton);
             this.Controls.Add(this.HistogramPicBox);
             this.Controls.Add(this.FotoFiltroPicBox);
-            this.Controls.Add(this.trackBar1);
+            this.Controls.Add(this.trackBarEdicion);
             this.Controls.Add(this.button17);
             this.Controls.Add(this.button16);
             this.Controls.Add(this.button15);
-            this.Controls.Add(this.button4);
+            this.Controls.Add(this.AberracionCromaBttn);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button10);
             this.Controls.Add(this.button7);
@@ -299,7 +321,7 @@ namespace WindowsFormsApp1
             this.Text = "Fotografias";
             this.Load += new System.EventHandler(this.Fotografias_Load);
             ((System.ComponentModel.ISupportInitialize)(this.FotoOriginalPictureBox)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.trackBarEdicion)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.FotoFiltroPicBox)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.HistogramPicBox)).EndInit();
             this.ResumeLayout(false);
@@ -318,14 +340,15 @@ namespace WindowsFormsApp1
         private System.Windows.Forms.Button button7;
         private System.Windows.Forms.Button button8;
         private System.Windows.Forms.Button button10;
-        private System.Windows.Forms.TrackBar trackBar1;
+        private System.Windows.Forms.TrackBar trackBarEdicion;
         private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.Button AberracionCromaBttn;
         private System.Windows.Forms.Button button15;
         private System.Windows.Forms.Button button16;
         private System.Windows.Forms.Button button17;
         private System.Windows.Forms.PictureBox FotoFiltroPicBox;
         private System.Windows.Forms.PictureBox HistogramPicBox;
         private System.Windows.Forms.Button HistoButton;
+        private System.Windows.Forms.Label label1;
     }
 }
