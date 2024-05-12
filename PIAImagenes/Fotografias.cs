@@ -18,6 +18,9 @@ namespace WindowsFormsApp1
         private Bitmap original;
         private Bitmap resultante;
         private int[] histograma = new int[256];
+        private int[] histogramaR = new int[256];
+        private int[] histogramaG = new int[256];
+        private int[] histogramaB = new int[256];
         private int[,] conv3x3 = new int[3, 3];
         private int factor;
         private int offset;
@@ -132,11 +135,13 @@ namespace WindowsFormsApp1
                 for(y=0; y < original.Height; y++)
                 {
                     rColor = resultante.GetPixel(x, y);
-                    histograma[rColor.R]++;
+                    histogramaR[rColor.R]++;
+                    histogramaG[rColor.G]++;
+                    histogramaB[rColor.B]++;
                 }
             }
 
-            HistoForm hForm = new HistoForm(histograma);
+            HistoForm hForm = new HistoForm(histogramaR, histogramaB, histogramaG);
 
             hForm.Show();
         }
