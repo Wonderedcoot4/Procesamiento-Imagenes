@@ -542,6 +542,142 @@ namespace WindowsFormsApp1
 
         }
 
+        private void CanalAzulFiltroBttn_MouseHover(object sender, EventArgs e)
+        {
+            CanalAzulFiltroBttn.BackColor = Color.Magenta;
+        }
+
+        private void CanalAzulFiltroBttn_MouseLeave(object sender, EventArgs e)
+        {
+            CanalAzulFiltroBttn.BackColor = Color.FromArgb(192, 0, 0);
+        }
+
+        private void FiltroRojoBttn_MouseHover(object sender, EventArgs e)
+        {
+            FiltroRojoBttn.BackColor = Color.Magenta;
+        }
+
+        private void FiltroRojoBttn_MouseLeave(object sender, EventArgs e)
+        {
+            FiltroRojoBttn.BackColor = Color.FromArgb(192, 0, 0);
+        }
+
+        private void EspejoFiltroBttn_MouseHover(object sender, EventArgs e)
+        {
+            EspejoFiltroBttn.BackColor = Color.Magenta;
+        }
+
+        private void EspejoFiltroBttn_MouseLeave(object sender, EventArgs e)
+        {
+            EspejoFiltroBttn.BackColor = Color.FromArgb(192, 0, 0);
+        }
+
+        private void ContrasteFiltroBttn_MouseHover(object sender, EventArgs e)
+        {
+            ContrasteFiltroBttn.BackColor = Color.Magenta;
+        }
+
+        private void ContrasteFiltroBttn_MouseLeave(object sender, EventArgs e)
+        {
+            ContrasteFiltroBttn.BackColor = Color.FromArgb(192, 0, 0);
+        }
+
+        private void SobelFiltroBttn_Click(object sender, EventArgs e)
+        {
+            int[,] sobel0 = new int[,]
+            {
+                {1,2,1 },
+                {0,0,0 },
+                {-1,-2,-1 } };
+            int[,] sobel1 = new int[,]
+           {
+                {2,1,0 },
+                {1,0,-1 },
+                {0,-1,-2 } };
+           int[,] sobel2 = new int[,]
+           {
+                {1,0,-1 },
+                {2,0,-2 },
+                {1,0,-1} };
+            int[,] sobel3 = new int[,]
+          {
+                {0,-1,-2 },
+                {1,0,-1 },
+                {2,1,0} };
+         int[,] sobel4 = new int[,]
+          {
+                {-1,-2,-1 },
+                {0,0,0 },
+                {1,2,1} };
+         int[,] sobel5 = new int[,]
+          {
+                {-2,-1,0 },
+                {-1,0,1},
+                {0,1,2} };
+         int[,] prewitt6 = new int[,]
+              {
+                {-1,0,1 },
+                {-2,0,2},
+                {-1,0,1} };
+            int[,] sobel7 = new int[,]
+              {
+                {0,1,2},
+                {-1,0,1},
+                {-2,-1,0} };
+
+            Bitmap intermedio = (Bitmap)resultante.Clone();
+
+            ConvGris(sobel3, intermedio, 0, 255);
+        }
+
+        private void ConvGris(int[,] pMatriz, Bitmap pImagen, int pInferior, int pSuperior)
+        {
+            int x = 0;
+            int y = 0;
+            int a = 0;
+            int b = 0;
+            Color oColor;
+
+            int suma = 0;
+
+            for ( x = 1; x < pImagen.Width -1; x++)
+            {
+                for ( y = 1; y < pImagen.Height - 1; y++)
+                {
+                    suma = 0;
+                    for (a= -1; a < 2; a++)
+                    {
+                        for ( b = -1; b < 2; b++)
+                        {
+                            oColor = pImagen.GetPixel(x + a, y + b);
+                            suma = suma + (oColor.R * pMatriz[a + 1, b + 1]);
+                        }
+                    }
+                    if (suma <pInferior)
+                    {
+                        suma = 0;
+                    }
+                    else if (suma > pSuperior)
+                    {
+                        suma = 255;
+                    }
+                    resultante.SetPixel(x, y, Color.FromArgb(suma, suma, suma));
+                }
+            }
+            pImagen = resultante;
+            FotoFiltroPicBox.Image = pImagen;
+        }
+
+        private void SobelFiltroBttn_MouseLeave(object sender, EventArgs e)
+        {
+            SobelFiltroBttn.BackColor = Color.Magenta;
+        }
+
+        private void SobelFiltroBttn_MouseHover(object sender, EventArgs e)
+        {
+            SobelFiltroBttn.BackColor = Color.FromArgb(192, 0, 0);
+        }
+
         private void FotoFiltroPicBox_Paint(object sender, PaintEventArgs e)
         {
   

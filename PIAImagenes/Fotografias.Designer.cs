@@ -37,7 +37,7 @@ namespace WindowsFormsApp1
             this.FiltroPixeladoBtn = new System.Windows.Forms.Button();
             this.CanalAzulFiltroBttn = new System.Windows.Forms.Button();
             this.NegativoFiltroBttn = new System.Windows.Forms.Button();
-            this.button8 = new System.Windows.Forms.Button();
+            this.SobelFiltroBttn = new System.Windows.Forms.Button();
             this.GradianteFiltroBttn = new System.Windows.Forms.Button();
             this.trackBarEdicion = new System.Windows.Forms.TrackBar();
             this.FiltroRojoBttn = new System.Windows.Forms.Button();
@@ -134,6 +134,8 @@ namespace WindowsFormsApp1
             this.CanalAzulFiltroBttn.Text = "Canal Azul";
             this.CanalAzulFiltroBttn.UseVisualStyleBackColor = false;
             this.CanalAzulFiltroBttn.Click += new System.EventHandler(this.CanalAzulFiltroBttn_Click);
+            this.CanalAzulFiltroBttn.MouseLeave += new System.EventHandler(this.CanalAzulFiltroBttn_MouseLeave);
+            this.CanalAzulFiltroBttn.MouseHover += new System.EventHandler(this.CanalAzulFiltroBttn_MouseHover);
             // 
             // NegativoFiltroBttn
             // 
@@ -150,17 +152,20 @@ namespace WindowsFormsApp1
             this.NegativoFiltroBttn.MouseLeave += new System.EventHandler(this.NegativoFiltroBttn_MouseLeave);
             this.NegativoFiltroBttn.MouseHover += new System.EventHandler(this.NegativoFiltroBttn_MouseHover);
             // 
-            // button8
+            // SobelFiltroBttn
             // 
-            this.button8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.button8.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.button8.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button8.Location = new System.Drawing.Point(1415, 126);
-            this.button8.Name = "button8";
-            this.button8.Size = new System.Drawing.Size(187, 92);
-            this.button8.TabIndex = 10;
-            this.button8.Text = "Sobel";
-            this.button8.UseVisualStyleBackColor = false;
+            this.SobelFiltroBttn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.SobelFiltroBttn.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.SobelFiltroBttn.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.SobelFiltroBttn.Location = new System.Drawing.Point(1415, 126);
+            this.SobelFiltroBttn.Name = "SobelFiltroBttn";
+            this.SobelFiltroBttn.Size = new System.Drawing.Size(187, 92);
+            this.SobelFiltroBttn.TabIndex = 10;
+            this.SobelFiltroBttn.Text = "Sobel";
+            this.SobelFiltroBttn.UseVisualStyleBackColor = false;
+            this.SobelFiltroBttn.Click += new System.EventHandler(this.SobelFiltroBttn_Click);
+            this.SobelFiltroBttn.MouseLeave += new System.EventHandler(this.SobelFiltroBttn_MouseLeave);
+            this.SobelFiltroBttn.MouseHover += new System.EventHandler(this.SobelFiltroBttn_MouseHover);
             // 
             // GradianteFiltroBttn
             // 
@@ -202,6 +207,8 @@ namespace WindowsFormsApp1
             this.FiltroRojoBttn.Text = "Canal Rojo";
             this.FiltroRojoBttn.UseVisualStyleBackColor = false;
             this.FiltroRojoBttn.Click += new System.EventHandler(this.FiltroRojoBttn_Click);
+            this.FiltroRojoBttn.MouseLeave += new System.EventHandler(this.FiltroRojoBttn_MouseLeave);
+            this.FiltroRojoBttn.MouseHover += new System.EventHandler(this.FiltroRojoBttn_MouseHover);
             // 
             // AberracionCromaBttn
             // 
@@ -245,6 +252,8 @@ namespace WindowsFormsApp1
             this.EspejoFiltroBttn.Text = "Espejo";
             this.EspejoFiltroBttn.UseVisualStyleBackColor = false;
             this.EspejoFiltroBttn.Click += new System.EventHandler(this.EspejoFiltroBttn_Click);
+            this.EspejoFiltroBttn.MouseLeave += new System.EventHandler(this.EspejoFiltroBttn_MouseLeave);
+            this.EspejoFiltroBttn.MouseHover += new System.EventHandler(this.EspejoFiltroBttn_MouseHover);
             // 
             // ContrasteFiltroBttn
             // 
@@ -258,6 +267,8 @@ namespace WindowsFormsApp1
             this.ContrasteFiltroBttn.Text = "Constraste";
             this.ContrasteFiltroBttn.UseVisualStyleBackColor = false;
             this.ContrasteFiltroBttn.Click += new System.EventHandler(this.ContrasteFiltroBttn_Click);
+            this.ContrasteFiltroBttn.MouseLeave += new System.EventHandler(this.ContrasteFiltroBttn_MouseLeave);
+            this.ContrasteFiltroBttn.MouseHover += new System.EventHandler(this.ContrasteFiltroBttn_MouseHover);
             // 
             // FotoFiltroPicBox
             // 
@@ -321,7 +332,7 @@ namespace WindowsFormsApp1
             this.Controls.Add(this.FiltroRojoBttn);
             this.Controls.Add(this.GradianteFiltroBttn);
             this.Controls.Add(this.NegativoFiltroBttn);
-            this.Controls.Add(this.button8);
+            this.Controls.Add(this.SobelFiltroBttn);
             this.Controls.Add(this.CanalAzulFiltroBttn);
             this.Controls.Add(this.FiltroPixeladoBtn);
             this.Controls.Add(this.StartScreenBttn);
@@ -351,7 +362,7 @@ namespace WindowsFormsApp1
         private System.Windows.Forms.Button FiltroPixeladoBtn;
         private System.Windows.Forms.Button CanalAzulFiltroBttn;
         private System.Windows.Forms.Button NegativoFiltroBttn;
-        private System.Windows.Forms.Button button8;
+        private System.Windows.Forms.Button SobelFiltroBttn;
         private System.Windows.Forms.Button GradianteFiltroBttn;
         private System.Windows.Forms.TrackBar trackBarEdicion;
         private System.Windows.Forms.Button FiltroRojoBttn;
