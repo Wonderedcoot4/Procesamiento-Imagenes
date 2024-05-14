@@ -402,7 +402,7 @@ namespace WindowsFormsApp1
         {
             GradianteFiltroBttn.BackColor = Color.FromArgb(192, 0, 0);
         }
-
+        //6 filtro
         private void ContrasteFiltroBttn_Click(object sender, EventArgs e)
         {
             int contraste = ValorTrackerBar;
@@ -466,6 +466,80 @@ namespace WindowsFormsApp1
                 }
             }
             FotoFiltroPicBox.Image = resultante;
+        }
+        //7 Filtro
+        private void EspejoFiltroBttn_Click(object sender, EventArgs e)
+        {
+            int x = 0;
+            int y = 0;
+
+            resultante = new Bitmap(original.Width, original.Height);
+
+            Color rColor = new Color();
+            Color oColor = new Color();
+
+            float g = 0;
+
+            for (x = 0; x < original.Width; x++)
+            {
+                for (y = 0; y < original.Height; y++)
+                {
+                    oColor = original.GetPixel(x, y);
+
+                    rColor = Color.FromArgb(oColor.R, oColor.G, oColor.B);
+
+                    resultante.SetPixel(original.Width - x - 1, y, rColor);
+                }
+            }
+
+            FotoFiltroPicBox.Image = resultante;
+        }
+        //8 Filtro
+        private void FiltroRojoBttn_Click(object sender, EventArgs e)
+        {
+            int x = 0;
+            int y = 0;
+
+            resultante = new Bitmap(original.Width, original.Height);
+            Color rColor = new Color();
+            Color oColor = new Color();
+
+            for (x = 0; x < original.Width; x++)
+            {
+                for (y = 0; y < original.Height; y++)
+                {
+                    oColor = original.GetPixel(x, y);
+
+                    rColor = Color.FromArgb(oColor.R, 0, 0);
+
+                    resultante.SetPixel(x, y, rColor);
+                }
+            }
+            FotoFiltroPicBox.Image = resultante;
+        }
+        //9 Filtro
+        private void CanalAzulFiltroBttn_Click(object sender, EventArgs e)
+        {
+            int x = 0;
+            int y = 0;
+
+            resultante = new Bitmap(original.Width, original.Height);
+            Color rColor = new Color();
+            Color oColor = new Color();
+
+            for (x = 0; x < original.Width; x++)
+            {
+                for (y = 0; y < original.Height; y++)
+                {
+                    oColor = original.GetPixel(x, y);
+
+                    rColor = Color.FromArgb(0, 0, oColor.B);
+
+                    resultante.SetPixel(x, y, rColor);
+                }
+            }
+            FotoFiltroPicBox.Image = resultante;
+
         }
 
         private void FotoFiltroPicBox_Paint(object sender, PaintEventArgs e)
