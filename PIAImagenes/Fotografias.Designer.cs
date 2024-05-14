@@ -44,7 +44,7 @@ namespace WindowsFormsApp1
             this.AberracionCromaBttn = new System.Windows.Forms.Button();
             this.ColorizarFiltroBttn = new System.Windows.Forms.Button();
             this.button16 = new System.Windows.Forms.Button();
-            this.button17 = new System.Windows.Forms.Button();
+            this.ContrasteFiltroBttn = new System.Windows.Forms.Button();
             this.FotoFiltroPicBox = new System.Windows.Forms.PictureBox();
             this.HistogramPicBox = new System.Windows.Forms.PictureBox();
             this.HistoButton = new System.Windows.Forms.Button();
@@ -243,17 +243,18 @@ namespace WindowsFormsApp1
             this.button16.Text = "Espejo";
             this.button16.UseVisualStyleBackColor = false;
             // 
-            // button17
+            // ContrasteFiltroBttn
             // 
-            this.button17.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.button17.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.button17.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button17.Location = new System.Drawing.Point(1667, 485);
-            this.button17.Name = "button17";
-            this.button17.Size = new System.Drawing.Size(187, 92);
-            this.button17.TabIndex = 17;
-            this.button17.Text = "Constraste";
-            this.button17.UseVisualStyleBackColor = false;
+            this.ContrasteFiltroBttn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.ContrasteFiltroBttn.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.ContrasteFiltroBttn.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ContrasteFiltroBttn.Location = new System.Drawing.Point(1667, 485);
+            this.ContrasteFiltroBttn.Name = "ContrasteFiltroBttn";
+            this.ContrasteFiltroBttn.Size = new System.Drawing.Size(187, 92);
+            this.ContrasteFiltroBttn.TabIndex = 17;
+            this.ContrasteFiltroBttn.Text = "Constraste";
+            this.ContrasteFiltroBttn.UseVisualStyleBackColor = false;
+            this.ContrasteFiltroBttn.Click += new System.EventHandler(this.ContrasteFiltroBttn_Click);
             // 
             // FotoFiltroPicBox
             // 
@@ -310,7 +311,7 @@ namespace WindowsFormsApp1
             this.Controls.Add(this.HistogramPicBox);
             this.Controls.Add(this.FotoFiltroPicBox);
             this.Controls.Add(this.trackBarEdicion);
-            this.Controls.Add(this.button17);
+            this.Controls.Add(this.ContrasteFiltroBttn);
             this.Controls.Add(this.button16);
             this.Controls.Add(this.ColorizarFiltroBttn);
             this.Controls.Add(this.AberracionCromaBttn);
@@ -354,7 +355,7 @@ namespace WindowsFormsApp1
         private System.Windows.Forms.Button AberracionCromaBttn;
         private System.Windows.Forms.Button ColorizarFiltroBttn;
         private System.Windows.Forms.Button button16;
-        private System.Windows.Forms.Button button17;
+        private System.Windows.Forms.Button ContrasteFiltroBttn;
         private System.Windows.Forms.PictureBox FotoFiltroPicBox;
         private System.Windows.Forms.PictureBox HistogramPicBox;
         private System.Windows.Forms.Button HistoButton;

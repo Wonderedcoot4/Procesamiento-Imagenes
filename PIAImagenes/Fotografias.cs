@@ -35,6 +35,7 @@ namespace WindowsFormsApp1
             anchoVentana = 800;
             altoVentana = 600;
             trackBarEdicion.ValueChanged += TrackerBar_ValueChanged;
+            trackBarEdicion.Value = 20;
             
         }
 
@@ -187,6 +188,7 @@ namespace WindowsFormsApp1
 
         private void AberracionCromaBttn_Click(object sender, EventArgs e)
         {
+            Bitmap res;
             resultante = original;
             Bitmap imagenBlanca = new Bitmap(100, 100);
             Graphics gr;
@@ -204,8 +206,7 @@ namespace WindowsFormsApp1
             int r = 0;
             int g = 0;
             int b = 0;
-            resultante = original;
-            resultante = new Bitmap(original.Width, original.Height);
+            res = new Bitmap(original.Width, original.Height);
 
             for ( x = 0; x < original.Width; x++)
             {
@@ -231,6 +232,7 @@ namespace WindowsFormsApp1
                         b = 0;
 
                     resultante.SetPixel(x, y, Color.FromArgb(r, g, b));
+                 
                 }
 
             }
@@ -251,7 +253,8 @@ namespace WindowsFormsApp1
 
         private void ColorizarFiltroBttn_Click(object sender, EventArgs e)
         {
-            resultante = original; //Quitale esto si quieres que los filtros se acumulen, lo agregue en todos los filtros
+            Bitmap res;
+            res = original; //Quitale esto si quieres que los filtros se acumulen, lo agregue en todos los filtros
             int x = 0;
             int y = 0;
 
@@ -268,15 +271,16 @@ namespace WindowsFormsApp1
             {
                 for (y = 0; y < original.Height; y++)
                 {
-                    MyColor = resultante.GetPixel(x, y);
+                    MyColor = res.GetPixel(x, y);
                     r = (int)(MyColor.R * rc);
                     g = (int)(MyColor.G * gc);
                     b = (int)(MyColor.B * bc);
-                    resultante.SetPixel(x, y, Color.FromArgb(r, g, b));
+                    res.SetPixel(x, y, Color.FromArgb(r, g, b));
                 }
 
             }
-            FotoFiltroPicBox.Image = resultante;
+            resultante = res;
+            FotoFiltroPicBox.Image = res;
         }
 
         private void ColorizarFiltroBttn_MouseHover(object sender, EventArgs e)
@@ -399,9 +403,77 @@ namespace WindowsFormsApp1
             GradianteFiltroBttn.BackColor = Color.FromArgb(192, 0, 0);
         }
 
+        private void ContrasteFiltroBttn_Click(object sender, EventArgs e)
+        {
+            int contraste = ValorTrackerBar;
+
+            //Hago una division
+            float c = (100.0f + contraste) / 100.0f;
+            c *= c;
+
+            int x = 0;
+            int y = 0;
+
+            resultante = new Bitmap(original.Width, original.Height);
+            Color rColor = new Color();
+            Color oColor = new Color();
+
+
+            float r = 0;
+            float g = 0;
+            float b = 0;
+
+
+            for ( x = 0; x < original.Width; x++)
+            {
+                for ( y = 0; y < original.Height; y++)
+                {
+                    oColor = original.GetPixel(x, y);
+
+                    r = ((((oColor.R / 255.0f) - 0.5f) * c) + 0.5f) * 255;
+                    if (r> 255)
+                    {
+                        r = 255;
+                    }
+                    if (r < 0)
+                    {
+                        r = 0;
+                    }
+                    g = ((((oColor.G / 255.0f) - 0.5f) * c) + 0.5f) * 255;
+                    if (g > 255)
+                    {
+                        g = 255;
+                    }
+                    if (g < 0)
+                    {
+                        g = 0;
+                    }
+
+                    b = ((((oColor.B / 255.0f) - 0.5f) * c) + 0.5f) * 255;
+                    if (b > 255)
+                    {
+                        b = 255;
+                    }
+                    if (b < 0)
+                    {
+                        b = 0;
+                    }
+
+                    rColor = Color.FromArgb((int)r, (int)g, (int)b);
+
+
+                    resultante.SetPixel(x, y, rColor);
+                }
+            }
+            FotoFiltroPicBox.Image = resultante;
+        }
+
         private void FotoFiltroPicBox_Paint(object sender, PaintEventArgs e)
         {
   
         }
+
+
+
     }
 }
