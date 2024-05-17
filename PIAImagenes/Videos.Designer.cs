@@ -31,12 +31,12 @@ namespace WindowsFormsApp1
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Videos));
             this.button13 = new System.Windows.Forms.Button();
-            this.button14 = new System.Windows.Forms.Button();
-            this.button11 = new System.Windows.Forms.Button();
-            this.button12 = new System.Windows.Forms.Button();
+            this.EspejoFiltroBttn = new System.Windows.Forms.Button();
+            this.ColorizarBttn = new System.Windows.Forms.Button();
+            this.AbeCromaticaBttn = new System.Windows.Forms.Button();
             this.button9 = new System.Windows.Forms.Button();
-            this.button10 = new System.Windows.Forms.Button();
-            this.button7 = new System.Windows.Forms.Button();
+            this.GradianteFiltroBttn = new System.Windows.Forms.Button();
+            this.NegatvioFiltroBttn = new System.Windows.Forms.Button();
             this.button8 = new System.Windows.Forms.Button();
             this.button6 = new System.Windows.Forms.Button();
             this.PixelFiltroBttn = new System.Windows.Forms.Button();
@@ -47,8 +47,10 @@ namespace WindowsFormsApp1
             this.PlayVidBttn = new System.Windows.Forms.Button();
             this.PauseBttn = new System.Windows.Forms.Button();
             this.playText = new System.Windows.Forms.Label();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.SuspendLayout();
             // 
             // button13
@@ -63,41 +65,44 @@ namespace WindowsFormsApp1
             this.button13.Text = "Constraste";
             this.button13.UseVisualStyleBackColor = false;
             // 
-            // button14
+            // EspejoFiltroBttn
             // 
-            this.button14.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.button14.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.button14.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button14.Location = new System.Drawing.Point(1221, 496);
-            this.button14.Name = "button14";
-            this.button14.Size = new System.Drawing.Size(187, 92);
-            this.button14.TabIndex = 30;
-            this.button14.Text = "Espejo";
-            this.button14.UseVisualStyleBackColor = false;
+            this.EspejoFiltroBttn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.EspejoFiltroBttn.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.EspejoFiltroBttn.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.EspejoFiltroBttn.Location = new System.Drawing.Point(1221, 496);
+            this.EspejoFiltroBttn.Name = "EspejoFiltroBttn";
+            this.EspejoFiltroBttn.Size = new System.Drawing.Size(187, 92);
+            this.EspejoFiltroBttn.TabIndex = 30;
+            this.EspejoFiltroBttn.Text = "Espejo";
+            this.EspejoFiltroBttn.UseVisualStyleBackColor = false;
+            this.EspejoFiltroBttn.Click += new System.EventHandler(this.EspejoFiltroBttn_Click);
             // 
-            // button11
+            // ColorizarBttn
             // 
-            this.button11.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.button11.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.button11.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button11.Location = new System.Drawing.Point(1473, 375);
-            this.button11.Name = "button11";
-            this.button11.Size = new System.Drawing.Size(187, 92);
-            this.button11.TabIndex = 29;
-            this.button11.Text = "Colorizar";
-            this.button11.UseVisualStyleBackColor = false;
+            this.ColorizarBttn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.ColorizarBttn.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.ColorizarBttn.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ColorizarBttn.Location = new System.Drawing.Point(1473, 375);
+            this.ColorizarBttn.Name = "ColorizarBttn";
+            this.ColorizarBttn.Size = new System.Drawing.Size(187, 92);
+            this.ColorizarBttn.TabIndex = 29;
+            this.ColorizarBttn.Text = "Colorizar";
+            this.ColorizarBttn.UseVisualStyleBackColor = false;
+            this.ColorizarBttn.Click += new System.EventHandler(this.ColorizarBttn_Click);
             // 
-            // button12
+            // AbeCromaticaBttn
             // 
-            this.button12.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.button12.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.button12.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button12.Location = new System.Drawing.Point(1221, 375);
-            this.button12.Name = "button12";
-            this.button12.Size = new System.Drawing.Size(187, 92);
-            this.button12.TabIndex = 28;
-            this.button12.Text = "Aberracion";
-            this.button12.UseVisualStyleBackColor = false;
+            this.AbeCromaticaBttn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.AbeCromaticaBttn.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.AbeCromaticaBttn.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.AbeCromaticaBttn.Location = new System.Drawing.Point(1221, 375);
+            this.AbeCromaticaBttn.Name = "AbeCromaticaBttn";
+            this.AbeCromaticaBttn.Size = new System.Drawing.Size(187, 92);
+            this.AbeCromaticaBttn.TabIndex = 28;
+            this.AbeCromaticaBttn.Text = "Aberracion";
+            this.AbeCromaticaBttn.UseVisualStyleBackColor = false;
+            this.AbeCromaticaBttn.Click += new System.EventHandler(this.AbeCromaticaBttn_Click);
             // 
             // button9
             // 
@@ -111,30 +116,31 @@ namespace WindowsFormsApp1
             this.button9.Text = "Resaltar Bordes";
             this.button9.UseVisualStyleBackColor = false;
             // 
-            // button10
+            // GradianteFiltroBttn
             // 
-            this.button10.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
-            this.button10.Enabled = false;
-            this.button10.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.button10.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button10.Location = new System.Drawing.Point(1221, 255);
-            this.button10.Name = "button10";
-            this.button10.Size = new System.Drawing.Size(187, 92);
-            this.button10.TabIndex = 26;
-            this.button10.Text = "Gradiante";
-            this.button10.UseVisualStyleBackColor = false;
+            this.GradianteFiltroBttn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.GradianteFiltroBttn.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.GradianteFiltroBttn.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.GradianteFiltroBttn.Location = new System.Drawing.Point(1221, 255);
+            this.GradianteFiltroBttn.Name = "GradianteFiltroBttn";
+            this.GradianteFiltroBttn.Size = new System.Drawing.Size(187, 92);
+            this.GradianteFiltroBttn.TabIndex = 26;
+            this.GradianteFiltroBttn.Text = "Gradiante";
+            this.GradianteFiltroBttn.UseVisualStyleBackColor = false;
+            this.GradianteFiltroBttn.Click += new System.EventHandler(this.GradianteFiltroBttn_Click);
             // 
-            // button7
+            // NegatvioFiltroBttn
             // 
-            this.button7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.button7.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.button7.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button7.Location = new System.Drawing.Point(1473, 137);
-            this.button7.Name = "button7";
-            this.button7.Size = new System.Drawing.Size(187, 92);
-            this.button7.TabIndex = 25;
-            this.button7.Text = "Negativo";
-            this.button7.UseVisualStyleBackColor = false;
+            this.NegatvioFiltroBttn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.NegatvioFiltroBttn.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.NegatvioFiltroBttn.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.NegatvioFiltroBttn.Location = new System.Drawing.Point(1473, 137);
+            this.NegatvioFiltroBttn.Name = "NegatvioFiltroBttn";
+            this.NegatvioFiltroBttn.Size = new System.Drawing.Size(187, 92);
+            this.NegatvioFiltroBttn.TabIndex = 25;
+            this.NegatvioFiltroBttn.Text = "Negativo";
+            this.NegatvioFiltroBttn.UseVisualStyleBackColor = false;
+            this.NegatvioFiltroBttn.Click += new System.EventHandler(this.NegatvioFiltroBttn_Click);
             // 
             // button8
             // 
@@ -178,7 +184,7 @@ namespace WindowsFormsApp1
             this.button4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.button4.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.button4.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button4.Location = new System.Drawing.Point(315, 712);
+            this.button4.Location = new System.Drawing.Point(40, 712);
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(187, 92);
             this.button4.TabIndex = 21;
@@ -205,7 +211,7 @@ namespace WindowsFormsApp1
             this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
             this.pictureBox1.Location = new System.Drawing.Point(-1, 0);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(984, 505);
+            this.pictureBox1.Size = new System.Drawing.Size(567, 467);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox1.TabIndex = 18;
             this.pictureBox1.TabStop = false;
@@ -213,17 +219,22 @@ namespace WindowsFormsApp1
             // trackBar1
             // 
             this.trackBar1.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.trackBar1.LargeChange = 1;
             this.trackBar1.Location = new System.Drawing.Point(867, 532);
+            this.trackBar1.Maximum = 100;
             this.trackBar1.Name = "trackBar1";
             this.trackBar1.Size = new System.Drawing.Size(330, 45);
             this.trackBar1.TabIndex = 33;
+            this.trackBar1.TickFrequency = 0;
+            this.trackBar1.TickStyle = System.Windows.Forms.TickStyle.None;
+            this.trackBar1.Value = 1;
             // 
             // PlayVidBttn
             // 
             this.PlayVidBttn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.PlayVidBttn.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.PlayVidBttn.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.PlayVidBttn.Location = new System.Drawing.Point(315, 511);
+            this.PlayVidBttn.Location = new System.Drawing.Point(303, 615);
             this.PlayVidBttn.Name = "PlayVidBttn";
             this.PlayVidBttn.Size = new System.Drawing.Size(187, 92);
             this.PlayVidBttn.TabIndex = 34;
@@ -236,7 +247,7 @@ namespace WindowsFormsApp1
             this.PauseBttn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.PauseBttn.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.PauseBttn.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.PauseBttn.Location = new System.Drawing.Point(604, 511);
+            this.PauseBttn.Location = new System.Drawing.Point(614, 615);
             this.PauseBttn.Name = "PauseBttn";
             this.PauseBttn.Size = new System.Drawing.Size(187, 92);
             this.PauseBttn.TabIndex = 35;
@@ -249,11 +260,22 @@ namespace WindowsFormsApp1
             this.playText.AutoSize = true;
             this.playText.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.playText.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.playText.Location = new System.Drawing.Point(989, 57);
+            this.playText.Location = new System.Drawing.Point(489, 545);
             this.playText.Name = "playText";
             this.playText.Size = new System.Drawing.Size(151, 25);
             this.playText.TabIndex = 36;
             this.playText.Text = "Texto textosuso";
+            // 
+            // pictureBox2
+            // 
+            this.pictureBox2.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.pictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox2.Image")));
+            this.pictureBox2.Location = new System.Drawing.Point(614, 0);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(567, 467);
+            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox2.TabIndex = 37;
+            this.pictureBox2.TabStop = false;
             // 
             // Videos
             // 
@@ -261,17 +283,18 @@ namespace WindowsFormsApp1
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.ClientSize = new System.Drawing.Size(1697, 816);
+            this.Controls.Add(this.pictureBox2);
             this.Controls.Add(this.playText);
             this.Controls.Add(this.PauseBttn);
             this.Controls.Add(this.PlayVidBttn);
             this.Controls.Add(this.trackBar1);
             this.Controls.Add(this.button13);
-            this.Controls.Add(this.button14);
-            this.Controls.Add(this.button11);
-            this.Controls.Add(this.button12);
+            this.Controls.Add(this.EspejoFiltroBttn);
+            this.Controls.Add(this.ColorizarBttn);
+            this.Controls.Add(this.AbeCromaticaBttn);
             this.Controls.Add(this.button9);
-            this.Controls.Add(this.button10);
-            this.Controls.Add(this.button7);
+            this.Controls.Add(this.GradianteFiltroBttn);
+            this.Controls.Add(this.NegatvioFiltroBttn);
             this.Controls.Add(this.button8);
             this.Controls.Add(this.button6);
             this.Controls.Add(this.PixelFiltroBttn);
@@ -283,6 +306,7 @@ namespace WindowsFormsApp1
             this.Text = "Videos";
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -291,12 +315,12 @@ namespace WindowsFormsApp1
         #endregion
 
         private System.Windows.Forms.Button button13;
-        private System.Windows.Forms.Button button14;
-        private System.Windows.Forms.Button button11;
-        private System.Windows.Forms.Button button12;
+        private System.Windows.Forms.Button EspejoFiltroBttn;
+        private System.Windows.Forms.Button ColorizarBttn;
+        private System.Windows.Forms.Button AbeCromaticaBttn;
         private System.Windows.Forms.Button button9;
-        private System.Windows.Forms.Button button10;
-        private System.Windows.Forms.Button button7;
+        private System.Windows.Forms.Button GradianteFiltroBttn;
+        private System.Windows.Forms.Button NegatvioFiltroBttn;
         private System.Windows.Forms.Button button8;
         private System.Windows.Forms.Button button6;
         private System.Windows.Forms.Button PixelFiltroBttn;
@@ -307,5 +331,6 @@ namespace WindowsFormsApp1
         private System.Windows.Forms.Button PlayVidBttn;
         private System.Windows.Forms.Button PauseBttn;
         private System.Windows.Forms.Label playText;
+        private System.Windows.Forms.PictureBox pictureBox2;
     }
 }
