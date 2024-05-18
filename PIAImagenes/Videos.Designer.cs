@@ -30,15 +30,15 @@ namespace WindowsFormsApp1
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Videos));
-            this.button13 = new System.Windows.Forms.Button();
+            this.ContrasteFiltroBttn = new System.Windows.Forms.Button();
             this.EspejoFiltroBttn = new System.Windows.Forms.Button();
             this.ColorizarBttn = new System.Windows.Forms.Button();
             this.AbeCromaticaBttn = new System.Windows.Forms.Button();
-            this.button9 = new System.Windows.Forms.Button();
+            this.CanalAzulFiltroBttn = new System.Windows.Forms.Button();
             this.GradianteFiltroBttn = new System.Windows.Forms.Button();
             this.NegatvioFiltroBttn = new System.Windows.Forms.Button();
-            this.button8 = new System.Windows.Forms.Button();
-            this.button6 = new System.Windows.Forms.Button();
+            this.SobelFiltroBttn = new System.Windows.Forms.Button();
+            this.CanalRojoFiltroBttn = new System.Windows.Forms.Button();
             this.PixelFiltroBttn = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
             this.UploadVideoBttn = new System.Windows.Forms.Button();
@@ -53,17 +53,18 @@ namespace WindowsFormsApp1
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.SuspendLayout();
             // 
-            // button13
+            // ContrasteFiltroBttn
             // 
-            this.button13.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.button13.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.button13.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button13.Location = new System.Drawing.Point(1473, 496);
-            this.button13.Name = "button13";
-            this.button13.Size = new System.Drawing.Size(187, 92);
-            this.button13.TabIndex = 31;
-            this.button13.Text = "Constraste";
-            this.button13.UseVisualStyleBackColor = false;
+            this.ContrasteFiltroBttn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.ContrasteFiltroBttn.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.ContrasteFiltroBttn.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ContrasteFiltroBttn.Location = new System.Drawing.Point(1473, 496);
+            this.ContrasteFiltroBttn.Name = "ContrasteFiltroBttn";
+            this.ContrasteFiltroBttn.Size = new System.Drawing.Size(187, 92);
+            this.ContrasteFiltroBttn.TabIndex = 31;
+            this.ContrasteFiltroBttn.Text = "Constraste";
+            this.ContrasteFiltroBttn.UseVisualStyleBackColor = false;
+            this.ContrasteFiltroBttn.Click += new System.EventHandler(this.ContrasteFiltroBttn_Click);
             // 
             // EspejoFiltroBttn
             // 
@@ -104,17 +105,18 @@ namespace WindowsFormsApp1
             this.AbeCromaticaBttn.UseVisualStyleBackColor = false;
             this.AbeCromaticaBttn.Click += new System.EventHandler(this.AbeCromaticaBttn_Click);
             // 
-            // button9
+            // CanalAzulFiltroBttn
             // 
-            this.button9.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.button9.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.button9.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button9.Location = new System.Drawing.Point(1473, 255);
-            this.button9.Name = "button9";
-            this.button9.Size = new System.Drawing.Size(187, 92);
-            this.button9.TabIndex = 27;
-            this.button9.Text = "Resaltar Bordes";
-            this.button9.UseVisualStyleBackColor = false;
+            this.CanalAzulFiltroBttn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.CanalAzulFiltroBttn.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.CanalAzulFiltroBttn.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.CanalAzulFiltroBttn.Location = new System.Drawing.Point(1473, 255);
+            this.CanalAzulFiltroBttn.Name = "CanalAzulFiltroBttn";
+            this.CanalAzulFiltroBttn.Size = new System.Drawing.Size(187, 92);
+            this.CanalAzulFiltroBttn.TabIndex = 27;
+            this.CanalAzulFiltroBttn.Text = "Canal Azul";
+            this.CanalAzulFiltroBttn.UseVisualStyleBackColor = false;
+            this.CanalAzulFiltroBttn.Click += new System.EventHandler(this.CanalAzulFiltroBttn_Click);
             // 
             // GradianteFiltroBttn
             // 
@@ -142,29 +144,31 @@ namespace WindowsFormsApp1
             this.NegatvioFiltroBttn.UseVisualStyleBackColor = false;
             this.NegatvioFiltroBttn.Click += new System.EventHandler(this.NegatvioFiltroBttn_Click);
             // 
-            // button8
+            // SobelFiltroBttn
             // 
-            this.button8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.button8.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.button8.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button8.Location = new System.Drawing.Point(1221, 137);
-            this.button8.Name = "button8";
-            this.button8.Size = new System.Drawing.Size(187, 92);
-            this.button8.TabIndex = 24;
-            this.button8.Text = "Sobel";
-            this.button8.UseVisualStyleBackColor = false;
+            this.SobelFiltroBttn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.SobelFiltroBttn.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.SobelFiltroBttn.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.SobelFiltroBttn.Location = new System.Drawing.Point(1221, 137);
+            this.SobelFiltroBttn.Name = "SobelFiltroBttn";
+            this.SobelFiltroBttn.Size = new System.Drawing.Size(187, 92);
+            this.SobelFiltroBttn.TabIndex = 24;
+            this.SobelFiltroBttn.Text = "Sobel";
+            this.SobelFiltroBttn.UseVisualStyleBackColor = false;
+            this.SobelFiltroBttn.Click += new System.EventHandler(this.SobelFiltroBttn_Click);
             // 
-            // button6
+            // CanalRojoFiltroBttn
             // 
-            this.button6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.button6.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.button6.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button6.Location = new System.Drawing.Point(1473, 23);
-            this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(187, 92);
-            this.button6.TabIndex = 23;
-            this.button6.Text = "Gris";
-            this.button6.UseVisualStyleBackColor = false;
+            this.CanalRojoFiltroBttn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.CanalRojoFiltroBttn.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.CanalRojoFiltroBttn.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.CanalRojoFiltroBttn.Location = new System.Drawing.Point(1473, 23);
+            this.CanalRojoFiltroBttn.Name = "CanalRojoFiltroBttn";
+            this.CanalRojoFiltroBttn.Size = new System.Drawing.Size(187, 92);
+            this.CanalRojoFiltroBttn.TabIndex = 23;
+            this.CanalRojoFiltroBttn.Text = "Canal Rojo";
+            this.CanalRojoFiltroBttn.UseVisualStyleBackColor = false;
+            this.CanalRojoFiltroBttn.Click += new System.EventHandler(this.CanalRojoFiltroBttn_Click);
             // 
             // PixelFiltroBttn
             // 
@@ -288,15 +292,15 @@ namespace WindowsFormsApp1
             this.Controls.Add(this.PauseBttn);
             this.Controls.Add(this.PlayVidBttn);
             this.Controls.Add(this.trackBar1);
-            this.Controls.Add(this.button13);
+            this.Controls.Add(this.ContrasteFiltroBttn);
             this.Controls.Add(this.EspejoFiltroBttn);
             this.Controls.Add(this.ColorizarBttn);
             this.Controls.Add(this.AbeCromaticaBttn);
-            this.Controls.Add(this.button9);
+            this.Controls.Add(this.CanalAzulFiltroBttn);
             this.Controls.Add(this.GradianteFiltroBttn);
             this.Controls.Add(this.NegatvioFiltroBttn);
-            this.Controls.Add(this.button8);
-            this.Controls.Add(this.button6);
+            this.Controls.Add(this.SobelFiltroBttn);
+            this.Controls.Add(this.CanalRojoFiltroBttn);
             this.Controls.Add(this.PixelFiltroBttn);
             this.Controls.Add(this.button4);
             this.Controls.Add(this.UploadVideoBttn);
@@ -314,15 +318,15 @@ namespace WindowsFormsApp1
 
         #endregion
 
-        private System.Windows.Forms.Button button13;
+        private System.Windows.Forms.Button ContrasteFiltroBttn;
         private System.Windows.Forms.Button EspejoFiltroBttn;
         private System.Windows.Forms.Button ColorizarBttn;
         private System.Windows.Forms.Button AbeCromaticaBttn;
-        private System.Windows.Forms.Button button9;
+        private System.Windows.Forms.Button CanalAzulFiltroBttn;
         private System.Windows.Forms.Button GradianteFiltroBttn;
         private System.Windows.Forms.Button NegatvioFiltroBttn;
-        private System.Windows.Forms.Button button8;
-        private System.Windows.Forms.Button button6;
+        private System.Windows.Forms.Button SobelFiltroBttn;
+        private System.Windows.Forms.Button CanalRojoFiltroBttn;
         private System.Windows.Forms.Button PixelFiltroBttn;
         private System.Windows.Forms.Button button4;
         private System.Windows.Forms.Button UploadVideoBttn;

@@ -41,7 +41,7 @@ namespace WindowsFormsApp1
                     isCapturing = true;
                     playText.Text = "Reanudar";
                 }
-            
+
             }
             else
             {
@@ -87,7 +87,8 @@ namespace WindowsFormsApp1
                 int trackBarValue = 10; // Valor por defecto
                 if (trackBar1.InvokeRequired)
                 {
-                    trackBar1.Invoke(new MethodInvoker(delegate {
+                    trackBar1.Invoke(new MethodInvoker(delegate
+                    {
                         trackBarValue = trackBar1.Value;
                     }));
                 }
@@ -106,7 +107,7 @@ namespace WindowsFormsApp1
                         break;
                     case 2:
                         filteredFrame = ApplyCustomColorFilter(emguFrame, trackBarValue);
-                       break;
+                        break;
                     case 3:
                         filteredFrame = ApplyColorize(emguFrame, trackBarValue);
                         break;
@@ -119,19 +120,20 @@ namespace WindowsFormsApp1
                     case 6:
                         filteredFrame = ApplyGradientFilter(emguFrame);
                         break;
-                        //case 7:
-                        //    emguFrame = CambiarTonoGradual(emguFrame);
-                        //    break;
-                        //case 8:
-                        //    emguFrame = AplicarGamma(emguFrame);
-                        //    break;
-                        //case 9:
-                        //    emguFrame = ModificarContraste(emguFrame);
-                        //    break;
-                        //case 10:
-                        //    emguFrame = FlipHorizontal(emguFrame);
-                        //    break;
-                        //default:
+                    case 7:
+                        Image<Gray, byte> sobelGrayFrame = ApplySobelFilter(emguFrame);
+                        filteredFrame = sobelGrayFrame.Convert<Bgr, byte>();
+                        break;
+                    case 8:
+                        filteredFrame = AplicarFiltroContraste(emguFrame, trackBarValue);
+                        break;
+                    case 9:
+                        filteredFrame = AplicarFiltroColor(emguFrame, trackBarValue);
+                        break;
+                    case 10:
+                        filteredFrame = AplicarFiltroColorAzul(emguFrame, trackBarValue);
+                        break;
+                    default:
 
                         break;
                 }
@@ -284,9 +286,9 @@ namespace WindowsFormsApp1
             Image<Bgr, byte> resultante = original.Copy();
 
             for (int x = 0; x < original.Width; x++)
-             {
-                for (int y = 0; y < original.Height; y++)
             {
+                for (int y = 0; y < original.Height; y++)
+                {
                     Bgr pixelColor = original[y, x];
                     Bgr negativeColor = new Bgr(255 - pixelColor.Blue, 255 - pixelColor.Green, 255 - pixelColor.Red);
                     resultante[y, x] = negativeColor;
@@ -321,9 +323,9 @@ namespace WindowsFormsApp1
             int b = 0;
 
             for (int x = 0; x < original.Width; x++)
-        {
-                for (int y = 0; y < original.Height; y++)
             {
+                for (int y = 0; y < original.Height; y++)
+                {
                     Bgr oColor = original[y, x];
 
                     r = (int)((r1 / 255.0f) * oColor.Red);
@@ -347,12 +349,179 @@ namespace WindowsFormsApp1
 
         private int Clamp(int value, int min, int max)
         {
-            return (value <min) ? min: (value > max) ? max: value;
+            return (value < min) ? min : (value > max) ? max : value;
         }
 
         private void GradianteFiltroBttn_Click(object sender, EventArgs e)
         {
             filtro = 6;
+        }
+
+        private Image<Gray, byte> ApplySobelFilter(Image<Bgr, byte> original)
+        {
+
+            Image<Gray, byte> gray = original.Convert<Gray, byte>();
+            Image<Gray, byte> resultante = gray.CopyBlank();
+
+            // Máscaras Sobel
+            int[,] sobelX = new int[,]
+            {
+        { -1, 0, 1 },
+        { -2, 0, 2 },
+        { -1, 0, 1 }
+            };
+
+            int[,] sobelY = new int[,]
+            {
+        { -1, -2, -1 },
+        { 0, 0, 0 },
+        { 1, 2, 1 }
+            };
+
+            for (int y = 1; y < gray.Height - 1; y++)
+            {
+                for (int x = 1; x < gray.Width - 1; x++)
+                {
+                    double gx = 0.0;
+                    double gy = 0.0;
+
+                    for (int ky = -1; ky <= 1; ky++)
+                    {
+                        for (int kx = -1; kx <= 1; kx++)
+                        {
+                            double pixel = gray.Data[y + ky, x + kx, 0];
+                            gx += pixel * sobelX[ky + 1, kx + 1];
+                            gy += pixel * sobelY[ky + 1, kx + 1];
+                        }
+                    }
+
+                    // Calcula la magnitud del gradiente
+                    double g = Math.Sqrt(gx * gx + gy * gy);
+
+                    // Clampea los valores entre 0 y 255
+                    byte pixelValue = (byte)Math.Min(Math.Max(g, 0), 255);
+
+                    resultante.Data[y, x, 0] = pixelValue;
+                }
+            }
+
+            return resultante;
+        }
+
+
+        private void SobelFiltroBttn_Click(object sender, EventArgs e)
+        {
+            filtro = 7;
+        }
+
+        private Image<Bgr, byte> AplicarFiltroContraste(Image<Bgr, byte> original, int contraste)
+        {
+            float c = (100.0f + contraste) / 100.0f;
+            c *= c;
+
+            Image<Bgr, byte> resultante = original.Copy();
+
+            for (int x = 0; x < original.Width; x++)
+            {
+                for (int y = 0; y < original.Height; y++)
+                {
+                    Bgr pixelColor = original[y, x];
+
+                    double r = ((((pixelColor.Red / 255.0) - 0.5) * c) + 0.5) * 255;
+                    double g = ((((pixelColor.Green / 255.0) - 0.5) * c) + 0.5) * 255;
+                    double b = ((((pixelColor.Blue / 255.0) - 0.5) * c) + 0.5) * 255;
+
+                    r = Math.Min(Math.Max(r, 0), 255);
+                    g = Math.Min(Math.Max(g, 0), 255);
+                    b = Math.Min(Math.Max(b, 0), 255);
+
+                    resultante[y, x] = new Bgr(b, g, r);
+                }
+            }
+
+            return resultante;
+        }
+
+        private void ContrasteFiltroBttn_Click(object sender, EventArgs e)
+        {
+            filtro = 8;
+        }
+
+        private void CanalRojoFiltroBttn_Click(object sender, EventArgs e)
+        {
+            filtro = 9;
+        }
+
+        private Image<Bgr, byte> AplicarFiltroColor(Image<Bgr, byte> original, int trackBarValue)
+        {
+            // Aquí implementa la lógica de tu filtro de color personalizado
+            // Puedes utilizar el valor del trackBar (ValorTrackerBar) como parámetro si es necesario
+
+            Image<Bgr, byte> resultante = original.Copy();
+
+            for (int x = 0; x < original.Width; x++)
+            {
+                for (int y = 0; y < original.Height; y++)
+                {
+                    Bgr pixelColor = original[y, x];
+
+                    // Implementa tu lógica de filtro de color aquí
+                    // Por ejemplo, puedes ajustar los componentes de color según ciertas condiciones
+
+                    // Ejemplo de un filtro que reduce el componente rojo
+                    double r = pixelColor.Red * 2.5;
+                    double g = pixelColor.Green;
+                    double b = pixelColor.Blue;
+
+                    // Clampea los valores entre 0 y 255
+                    r = Math.Min(Math.Max(r, 0), 255);
+                    g = Math.Min(Math.Max(g, 0), 255);
+                    b = Math.Min(Math.Max(b, 0), 255);
+
+                    resultante[y, x] = new Bgr(b, g, r);
+                }
+            }
+
+            return resultante;
+        }
+
+        private Image<Bgr, byte> AplicarFiltroColorAzul(Image<Bgr, byte> original, int trackBarValue)
+        {
+            // Aquí implementa la lógica de tu filtro de color personalizado
+            // Puedes utilizar el valor del trackBar (ValorTrackerBar) como parámetro si es necesario
+
+            Image<Bgr, byte> resultante = original.Copy();
+
+            for (int x = 0; x < original.Width; x++)
+            {
+                for (int y = 0; y < original.Height; y++)
+                {
+                    Bgr pixelColor = original[y, x];
+
+                    // Implementa tu lógica de filtro de color aquí
+                    // Por ejemplo, puedes ajustar los componentes de color según ciertas condiciones
+
+                    // Ejemplo de un filtro que reduce el componente rojo
+                    double r = pixelColor.Red ;
+                    double g = pixelColor.Green;
+                    double b = pixelColor.Blue * 3.5;
+
+                    // Clampea los valores entre 0 y 255
+                    r = Math.Min(Math.Max(r, 0), 255);
+                    g = Math.Min(Math.Max(g, 0), 255);
+                    b = Math.Min(Math.Max(b, 0), 255);
+
+                    resultante[y, x] = new Bgr(b, g, r);
+                }
+            }
+
+            return resultante;
+        }
+
+        private void CanalAzulFiltroBttn_Click(object sender, EventArgs e)
+        {
+            filtro = 10;
+
         }
     }
 }
